@@ -47,9 +47,14 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('✅ Fundadores carregados:', siteData.fundadores.lista.length);
     }
 
-    // ===== MEMBROS COM SISTEMA DE ABAS =====
+    // =====================================================
+    //  MEMBROS COM SISTEMA DE ABAS
+    // =====================================================
+
     const membrosContainer = document.getElementById('membros-container');
     if (membrosContainer && siteData.membrosAtuais) {
+        
+        // Configuração dos cargos
         const cargos = {
             'altaElite': { label: '⭐ Alta Elite', icon: 'fa-star', cor: '#ffd700' },
             'elite': { label: '⚔️ Elite', icon: 'fa-shield', cor: '#00ccff' },
@@ -57,23 +62,29 @@ document.addEventListener('DOMContentLoaded', function() {
             'tester': { label: '🧪 Testers', icon: 'fa-flask', cor: '#99ddff' }
         };
 
+        // Conta total de membros
+        const totalMembros = Object.values(siteData.membrosAtuais).reduce((acc, arr) => acc + arr.length, 0);
+
+        // Monta o HTML
         let html = `
             <div class="membros-header">
                 <div class="membros-stats">
-                    <span class="total-membros">👥 ${Object.values(siteData.membrosAtuais).flat().length} Membros</span>
+                    <span class="total-membros">👥 ${totalMembros} Membros</span>
                 </div>
                 <div class="membros-filtros" id="membros-filtros">
         `;
 
-        // Botões das abas
-        Object.keys(cargos).forEach((key, index) => {
+        // Cria os botões das abas
+        let first = true;
+        Object.keys(cargos).forEach((key) => {
             const count = siteData.membrosAtuais[key] ? siteData.membrosAtuais[key].length : 0;
             html += `
-                <button class="membro-filtro-btn ${index === 0 ? 'active' : ''}" data-cargo="${key}">
+                <button class="membro-filtro-btn ${first ? 'active' : ''}" data-cargo="${key}">
                     <i class="fas ${cargos[key].icon}"></i> ${cargos[key].label}
                     <span class="badge-count">${count}</span>
                 </button>
             `;
+            first = false;
         });
 
         html += `
@@ -82,11 +93,12 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="membros-grid-wrapper">
         `;
 
-        // Grid de cada cargo
-        Object.keys(cargos).forEach((key, index) => {
+        // Cria as grids de cada cargo
+        let firstGrid = true;
+        Object.keys(cargos).forEach((key) => {
             const membros = siteData.membrosAtuais[key] || [];
             html += `
-                <div class="membros-grid cargo-grid ${index === 0 ? 'active' : ''}" id="cargo-${key}">
+                <div class="cargo-grid ${firstGrid ? 'active' : ''}" id="cargo-${key}">
                     ${membros.map((membro, i) => `
                         <div class="membro-card" style="transition-delay: ${i * 0.03}s">
                             <div class="avatar-placeholder" style="background: linear-gradient(135deg, ${cargos[key].cor}, #0044cc);">
@@ -98,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     `).join('')}
                 </div>
             `;
+            firstGrid = false;
         });
 
         html += `</div>`;
