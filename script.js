@@ -1,5 +1,5 @@
 // =====================================================
-//  SCRIPT PRINCIPAL (ZYN ON TOP)
+//  SCRIPT PRINCIPAL (ZYN ON TOP - VERSÃO FODA)
 // =====================================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function createParticles() {
         const container = document.getElementById('particles');
         if (!container) return;
-
         for (let i = 0; i < 50; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fundadoresGrid.innerHTML = siteData.fundadores.lista.map((membro, index) => `
             <div class="membro-card" style="transition-delay: ${index * 0.1}s">
                 <div class="avatar-placeholder">
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-crown"></i>
                 </div>
                 <h3>${membro.nome}</h3>
                 <p>${membro.cargo}</p>
@@ -48,19 +47,84 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('✅ Fundadores carregados:', siteData.fundadores.lista.length);
     }
 
-    // ===== MEMBROS =====
-    const membrosGrid = document.getElementById('membros-grid');
-    if (membrosGrid && siteData.membrosAtuais) {
-        membrosGrid.innerHTML = siteData.membrosAtuais.lista.map((membro, index) => `
-            <div class="membro-card" style="transition-delay: ${index * 0.05}s">
-                <div class="avatar-placeholder">
-                    <i class="fas fa-user"></i>
+    // ===== MEMBROS COM SISTEMA DE ABAS =====
+    const membrosContainer = document.getElementById('membros-container');
+    if (membrosContainer && siteData.membrosAtuais) {
+        const cargos = {
+            'altaElite': { label: '⭐ Alta Elite', icon: 'fa-star', cor: '#ffd700' },
+            'elite': { label: '⚔️ Elite', icon: 'fa-shield', cor: '#00ccff' },
+            'membro': { label: '👤 Membros', icon: 'fa-user', cor: '#66aaff' },
+            'tester': { label: '🧪 Testers', icon: 'fa-flask', cor: '#99ddff' }
+        };
+
+        let html = `
+            <div class="membros-header">
+                <div class="membros-stats">
+                    <span class="total-membros">👥 ${Object.values(siteData.membrosAtuais).flat().length} Membros</span>
                 </div>
-                <h3>${membro.nome}</h3>
-                <p>${membro.cargo}</p>
+                <div class="membros-filtros" id="membros-filtros">
+        `;
+
+        // Botões das abas
+        Object.keys(cargos).forEach((key, index) => {
+            const count = siteData.membrosAtuais[key] ? siteData.membrosAtuais[key].length : 0;
+            html += `
+                <button class="membro-filtro-btn ${index === 0 ? 'active' : ''}" data-cargo="${key}">
+                    <i class="fas ${cargos[key].icon}"></i> ${cargos[key].label}
+                    <span class="badge-count">${count}</span>
+                </button>
+            `;
+        });
+
+        html += `
+                </div>
             </div>
-        `).join('');
-        console.log('✅ Membros carregados:', siteData.membrosAtuais.lista.length);
+            <div class="membros-grid-wrapper">
+        `;
+
+        // Grid de cada cargo
+        Object.keys(cargos).forEach((key, index) => {
+            const membros = siteData.membrosAtuais[key] || [];
+            html += `
+                <div class="membros-grid cargo-grid ${index === 0 ? 'active' : ''}" id="cargo-${key}">
+                    ${membros.map((membro, i) => `
+                        <div class="membro-card" style="transition-delay: ${i * 0.03}s">
+                            <div class="avatar-placeholder" style="background: linear-gradient(135deg, ${cargos[key].cor}, #0044cc);">
+                                <i class="fas ${cargos[key].icon}"></i>
+                            </div>
+                            <h3>${membro.nome}</h3>
+                            <p>${membro.cargo}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        });
+
+        html += `</div>`;
+        membrosContainer.innerHTML = html;
+
+        // ===== FUNÇÃO DAS ABAS =====
+        const filtroBtns = document.querySelectorAll('.membro-filtro-btn');
+        const cargoGrids = document.querySelectorAll('.cargo-grid');
+
+        filtroBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active de todos os botões
+                filtroBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Mostra apenas o grid correspondente
+                const cargo = this.dataset.cargo;
+                cargoGrids.forEach(grid => {
+                    grid.classList.remove('active');
+                    if (grid.id === `cargo-${cargo}`) {
+                        grid.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        console.log('✅ Membros carregados com sistema de abas!');
     }
 
     // ===== MEMBRO DO MÊS =====
@@ -69,10 +133,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const m = siteData.membroMes.membro;
         membroMesContainer.innerHTML = `
             <div class="membro-mes-card">
-                <div class="membro-mes-badge">⭐ MÊS DE ${siteData.membroMes.mes}</div>
+                <div class="membro-mes-badge">⭐ ${siteData.membroMes.mes}</div>
                 <div class="membro-mes-content">
                     <div class="membro-mes-foto">
-                        <div class="avatar-placeholder">
+                        <div class="avatar-placeholder" style="background: linear-gradient(135deg, #ffd700, #ff6b00);">
                             <i class="fas fa-star"></i>
                         </div>
                         <div class="membro-mes-destaque">${m.destaque || '🏆 Destaque'}</div>
@@ -82,9 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p class="membro-mes-cargo">${m.cargo}</p>
                         <p class="membro-mes-motivo">${m.motivo || 'Membro foda do mês!'}</p>
                         <div class="membro-mes-stats">
-                            <span><i class="fas fa-trophy"></i> Em destaque</span>
-                            <span><i class="fas fa-fire"></i> Top performance</span>
-                            <span><i class="fas fa-star"></i> MVP</span>
+                            <span><i class="fas fa-trophy"></i> Destaque</span>
+                            <span><i class="fas fa-fire"></i> MVP</span>
+                            <span><i class="fas fa-crown"></i> Top</span>
                         </div>
                     </div>
                 </div>
@@ -144,7 +208,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (midiasGrid && siteData.midias) {
         midiasGrid.innerHTML = siteData.midias.lista.map(midia => {
             let html = '';
-
             if (midia.tipo === 'imagem') {
                 html = `
                     <div class="midia-item imagem" data-tipo="imagem">
@@ -174,19 +237,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="midia-legenda">${midia.legenda}</div>
                         </div>
                     `;
-                } else if (midia.tipoVideo === 'mp4') {
-                    html = `
-                        <div class="midia-item video" data-tipo="video">
-                            <video controls preload="metadata">
-                                <source src="${midia.src}" type="video/mp4">
-                                Seu navegador não suporta vídeos.
-                            </video>
-                            <div class="midia-legenda">${midia.legenda}</div>
-                        </div>
-                    `;
                 }
             }
-
             return html;
         }).join('');
         console.log('✅ Mídias carregadas:', siteData.midias.lista.length);
@@ -198,19 +250,13 @@ document.addEventListener('DOMContentLoaded', function() {
         filtro.addEventListener('click', function() {
             filtros.forEach(f => f.classList.remove('active'));
             this.classList.add('active');
-
             const filtroTipo = this.dataset.filtro;
             const midiasItems = document.querySelectorAll('.midia-item');
-
             midiasItems.forEach(item => {
                 if (filtroTipo === 'todos') {
                     item.style.display = 'block';
                 } else {
-                    if (item.dataset.tipo === filtroTipo) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
+                    item.style.display = item.dataset.tipo === filtroTipo ? 'block' : 'none';
                 }
             });
         });
@@ -319,7 +365,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const rotateY = (centerX - x) / 10;
             this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
         });
-
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
         });
