@@ -602,7 +602,10 @@ body {
     }
 }
 
-/* ===== SISTEMA DE ABAS DOS MEMBROS ===== */
+/* ================================================================
+   SISTEMA DE ABAS DOS MEMBROS
+   ================================================================ */
+
 .membros-header {
     display: flex;
     justify-content: space-between;
