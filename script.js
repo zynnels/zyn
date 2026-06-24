@@ -170,43 +170,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('✅ Membro do mês carregado');
     }
 
-    // ===== TIERS =====
-    const tiersContainer = document.getElementById('tiers-container');
-    if (tiersContainer && siteData.tiers) {
-        const mcTiers = siteData.tiers.lista.filter(t => t.categoria === 'MCTier');
-        const subTiers = siteData.tiers.lista.filter(t => t.categoria === 'SubTier');
-
-        let html = '';
-        if (mcTiers.length) {
-            html += `<div class="tier-categoria"><h3>⭐ MCTiers</h3><div class="tiers-grid">`;
-            mcTiers.forEach(t => {
-                html += `
-                    <div class="tier-card" style="border-color: ${t.cor}">
-                        <div class="tier-icon"><i class="fas fa-shield"></i></div>
-                        <div class="tier-nome">${t.tier}</div>
-                        <div class="tier-desc">${t.nome}</div>
-                    </div>
-                `;
-            });
-            html += `</div></div>`;
-        }
-        if (subTiers.length) {
-            html += `<div class="tier-categoria"><h3>⚔️ SubTiers</h3><div class="tiers-grid">`;
-            subTiers.forEach(t => {
-                html += `
-                    <div class="tier-card" style="border-color: ${t.cor}">
-                        <div class="tier-icon"><i class="fas fa-sword"></i></div>
-                        <div class="tier-nome">${t.tier}</div>
-                        <div class="tier-desc">${t.nome}</div>
-                    </div>
-                `;
-            });
-            html += `</div></div>`;
-        }
-        tiersContainer.innerHTML = html;
-        console.log('✅ Tiers carregados:', siteData.tiers.lista.length);
-    }
-
     // ===== CONQUISTAS =====
     const conquistasLista = document.getElementById('conquistas-lista');
     if (conquistasLista && siteData.conquistas) {
