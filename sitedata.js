@@ -58,7 +58,7 @@ const siteData = {
   membroMes: {
     titulo: "Destaque do Mês",
     subtitulo: "O membro mais foda do mês!",
-    mes: "Junho 2024",
+    mes: "Junho 2026",
     membro: {
       nome: "Em breve",
       cargo: "---",
@@ -66,22 +66,6 @@ const siteData = {
       motivo: "🏆 Aguardando definição do destaque do mês",
       destaque: "🚀 Em breve"
     }
-  },
-
-  // ---------- TIERS DE PVP ----------
-  tiers: {
-    titulo: "Tiers da ZYN",
-    subtitulo: "Nossos níveis no PvP",
-    lista: [
-      { tier: "HT4", nome: "High Tier 4", icone: "", cor: "#0044cc", categoria: "MCTier" },
-      { tier: "LT3", nome: "Low Tier 3", icone: "", cor: "#0066ff", categoria: "MCTier" },
-      { tier: "LT4", nome: "Low Tier 4", icone: "", cor: "#3399ff", categoria: "MCTier" },
-      { tier: "Crystal", nome: "Crystal", icone: "", cor: "#00ccff", categoria: "SubTier" },
-      { tier: "Diamante", nome: "Diamante", icone: "", cor: "#66ccff", categoria: "SubTier" },
-      { tier: "Ouro", nome: "Ouro", icone: "", cor: "#99ddff", categoria: "SubTier" },
-      { tier: "Ferro", nome: "Ferro", icone: "", cor: "#aaddff", categoria: "SubTier" },
-      { tier: "Pedra", nome: "Pedra", icone: "", cor: "#bbddff", categoria: "SubTier" }
-    ]
   },
 
   // ---------- CONQUISTAS ----------
@@ -124,15 +108,15 @@ const siteData = {
   contato: {
     titulo: "Quer entrar na ZYN?",
     texto: "Venha ser membro da ZYN ON TOP!",
-    discord: "https://discord.gg/seu-link",
+    discord: "https://discord.gg/JtxUMU3nmu",
     instagram: "https://instagram.com/zynontop",
     email: "zynontop@gmail.com",
-    onlineCount: 42
+    onlineCount: 93
   },
 
   // ---------- RODAPÉ ----------
   rodape: {
-    texto: "© 2024 ZYN ON TOP – A nova era do PvP"
+    texto: "© 2026 ZYN ON TOP – Uma nova era !"
   }
 };
 
