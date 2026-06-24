@@ -7,7 +7,7 @@ const siteData = {
   cabecalho: {
     titulo: "ZYN ON TOP",
     subtitulo: "Uma nova era",
-    imagemHeroi: "imagens/hero.png"
+    imagemHeroi: "imagens/hero.jpg"
   },
 
   // ---------- SOBRE O CLÃ ----------
