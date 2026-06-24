@@ -19,7 +19,7 @@ const siteData = {
       "Um clã de guerreiros, e muita resenha !."
     ],
     tags: ["⚔️ PvP", "🎮 Minecraft", "🤝 Amizade", "🚀 Evolução"],
-    imagemSobre: "imagens/sobre.jpg"
+    imagemSobre: "imagens/cla.png"
   },
 
   // ---------- FUNDADORES ----------
