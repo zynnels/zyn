@@ -32,7 +32,7 @@ const siteData = {
     ]
   },
 
-  // ---------- MEMBROS ATUAIS (ORGANIZADOS POR CARGO) ----------
+  // ---------- MEMBROS ATUAIS ----------
   membrosAtuais: {
     titulo: "Membros",
     // ---- ALTA ELITE ----
