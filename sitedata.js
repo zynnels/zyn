@@ -14,7 +14,7 @@ const siteData = {
   sobre: {
     titulo: "Quem somos?",
     historia: [
-      "Somos um clã de minecraft focado em PvP 1.9+ e evolução constante.",
+      "Somos um clã de minecraft focado em PvP e evolução constante.",
       "Nossa missão é dominar o servidor com estratégia, amizade e muito treino.",
       "Um clã de guerreiros, e muita resenha !."
     ],
@@ -26,9 +26,9 @@ const siteData = {
   fundadores: {
     titulo: "Fundadores",
     lista: [
-      { nome: "Fundador 1", cargo: "Fundador", foto: "" },
-      { nome: "Fundador 2", cargo: "Lider", foto: "" },
-      { nome: "Fundador 3", cargo: "Sub Lider", foto: "" }
+      { nome: "zCrystalHex", cargo: "Fundador", foto: "pdr" },
+      { nome: "ZGodPowerX", cargo: "Owner", foto: "god" },
+      { nome: "Asmodeus", cargo: "Lider", foto: "asmodeus" }
     ]
   },
 
@@ -36,11 +36,11 @@ const siteData = {
   membrosAtuais: {
     titulo: "Membros",
     lista: [
-      { nome: "Membro 1", cargo: "Elite PvP", foto: "" },
-      { nome: "Membro 2", cargo: "Dupador", foto: "" },
-      { nome: "Membro 3", cargo: "Elite", foto: "" },
-      { nome: "Membro 4", cargo: "Elite", foto: "" },
-      { nome: "Membro 5", cargo: "Membro", foto: "" },
+      { nome: "Elite_Evow", cargo: "Leader", foto: "elite" },
+      { nome: "Lootier", cargo: "Leader", foto: "uriel" },
+      { nome: "Baraaus ", cargo: "Sub Leader", foto: "baraaus" },
+      { nome: "Inject7", cargo: "Sub Leader", foto: "inject" },
+      { nome: "AkyraZ", cargo: "Sub Leader", foto: "akyra" },
       { nome: "Membro 6", cargo: "Elite", foto: "" },
       { nome: "Membro 7", cargo: "Elite", foto: "" },
       { nome: "Membro 8", cargo: "Membro", foto: "" },
