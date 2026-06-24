@@ -84,9 +84,9 @@ const siteData = {
     titulo: "Mídias",
     subtitulo: "Prints e vídeos do clã",
     lista: [
-      { tipo: "imagem", src: "", legenda: "Em breve - Print 1", destaque: true },
-      { tipo: "imagem", src: "", legenda: "Em breve - Print 2" },
-      { tipo: "imagem", src: "", legenda: "Em breve - Print 3" },
+      { tipo: "imagem", src: "cla2", legenda: "Em breve - Print 1", destaque: true },
+      { tipo: "imagem", src: "cla3", legenda: "Em breve - Print 2" },
+      { tipo: "imagem", src: "trofeu", legenda: "Em breve - Print 3" },
       { tipo: "imagem", src: "", legenda: "Em breve - Print 4" },
       { tipo: "video", tipoVideo: "youtube", id: "dQw4w9WgXcQ", legenda: "Em breve - Vídeo 1" },
       { tipo: "video", tipoVideo: "mp4", src: "", legenda: "Em breve - Vídeo 2" }
