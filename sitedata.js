@@ -10,6 +10,34 @@ const siteData = {
     imagemHeroi: "imagens/hero.jpg"
   },
 
+  // ---------- ANÚNCIOS (CAROUSEL) ----------
+  anuncios: {
+    titulo: "Anúncios",
+    subtitulo: "Fique por dentro das novidades da ZYN ON TOP",
+    slides: [
+      {
+        titulo: "🚀 Nova Era!",
+        descricao: "A ZYN ON TOP está de cara nova! Site reformulado e pronto para dominar!",
+        cor: "#0044cc"
+      },
+      {
+        titulo: "⚔️ Guerras Épicas!",
+        descricao: "Estamos nos preparando para a próxima LIGA DE CLÃS. Treinem muito!",
+        cor: "#0066ff"
+      },
+      {
+        titulo: "🎮 Recrutamento Aberto!",
+        descricao: "Estamos recrutando novos membros! Entre no Discord e venha fazer parte!",
+        cor: "#3399ff"
+      },
+      {
+        titulo: "🏆 Conquistas!",
+        descricao: "Já somos o clã com mais vitórias no servidor! Continuamos firmes!",
+        cor: "#ffd700"
+      }
+    ]
+  },
+
   // ---------- SOBRE O CLÃ ----------
   sobre: {
     titulo: "Quem somos?",
@@ -148,7 +176,7 @@ const siteData = {
     ]
   },
 
-  // ---------- SERVIDORES QUE JOGAMOS ----------
+  // ---------- SERVIDORES ----------
   servidores: {
     titulo: "Servidores que jogamos",
     subtitulo: "Onde a ZYN ON TOP está presente",
@@ -189,6 +217,14 @@ const siteData = {
       { src: "imagens/cla3.png", legenda: "Guerra" },
       { src: "imagens/trofeu.png", legenda: "Celebração" }
     ]
+  },
+
+  // ---------- DISCORD ----------
+  discord: {
+    titulo: "Discord da ZYN",
+    subtitulo: "Conecte-se com a comunidade!",
+    serverId: "SEU_SERVIDOR_ID", // ← Coloque o ID do seu servidor aqui
+    invite: "https://discord.gg/hWz7HAsuqS"
   },
 
   // ---------- REDES SOCIAIS / CONTATO ----------
