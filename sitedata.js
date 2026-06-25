@@ -168,30 +168,42 @@ const siteData = {
     ]
   },
 
-  // ---------- MÍDIAS ----------
-  midias: {
-    titulo: "Mídias",
-    subtitulo: "Prints e vídeos do clã",
-    lista: [
-      { tipo: "imagem", src: "imagens/cla2.png", legenda: "Clã reunido", destaque: true },
-      { tipo: "imagem", src: "imagens/cla3.png", legenda: "Guerra épica" },
-      { tipo: "imagem", src: "imagens/trofeu.png", legenda: "Troféu conquistado" },
-      { tipo: "imagem", src: "", legenda: "Em breve - Print 4" },
-      { tipo: "video", tipoVideo: "youtube", id: "dQw4w9WgXcQ", legenda: "Em breve - Vídeo 1" },
-      { tipo: "video", tipoVideo: "mp4", src: "", legenda: "Em breve - Vídeo 2" }
-    ]
-  },
+// ---------- SOBRE O CLÃ ----------
+sobre: {
+  titulo: "Quem somos?",
+  historia: [
+    "Somos um clã de minecraft focado em PvP/Build/Farm e evolução constante.",
+    "Nossa missão é dominar o servidor com estratégia, amizade e muito treino.",
+    "Uma clan em crescimento procurando pessoas para recrutar !."
+  ],
+  tags: ["⚔️ PvP", "🎮 Minecraft", "🤝 Amizade", "🚀 Evolução"],
+  imagemSobre: "https://via.placeholder.com/800x400/0044cc/ffffff?text=ZYN+ON+TOP"  // ← IMAGEM DA INTERNET
+},
 
-  // ---------- GALERIA ----------
-  galeria: {
-    titulo: "Galeria do Clã",
-    imagens: [
-      { src: "imagens/cla.png", legenda: "ZYN ON TOP", destaque: true },
-      { src: "imagens/cla2.png", legenda: "Momento épico" },
-      { src: "imagens/cla3.png", legenda: "Guerra" },
-      { src: "imagens/trofeu.png", legenda: "Celebração" }
-    ]
-  },
+// ---------- MÍDIAS ----------
+midias: {
+  titulo: "Mídias",
+  subtitulo: "Prints e vídeos do clã",
+  lista: [
+    { tipo: "imagem", src: "https://via.placeholder.com/400x300/0044cc/ffffff?text=Cl%C3%A3+reunido", legenda: "Clã reunido", destaque: true },
+    { tipo: "imagem", src: "https://via.placeholder.com/400x300/0066ff/ffffff?text=Guerra+%C3%A9pica", legenda: "Guerra épica" },
+    { tipo: "imagem", src: "https://via.placeholder.com/400x300/3399ff/ffffff?text=Trof%C3%A9u", legenda: "Troféu conquistado" },
+    { tipo: "imagem", src: "", legenda: "Em breve - Print 4" },
+    { tipo: "video", tipoVideo: "youtube", id: "dQw4w9WgXcQ", legenda: "Em breve - Vídeo 1" },
+    { tipo: "video", tipoVideo: "mp4", src: "", legenda: "Em breve - Vídeo 2" }
+  ]
+},
+
+// ---------- GALERIA ----------
+galeria: {
+  titulo: "Galeria do Clã",
+  imagens: [
+    { src: "https://via.placeholder.com/800x600/0044cc/ffffff?text=ZYN+ON+TOP", legenda: "ZYN ON TOP", destaque: true },
+    { src: "https://via.placeholder.com/400x300/0066ff/ffffff?text=Momento+%C3%A9pico", legenda: "Momento épico" },
+    { src: "https://via.placeholder.com/400x300/3399ff/ffffff?text=Guerra", legenda: "Guerra" },
+    { src: "https://via.placeholder.com/400x300/66ccff/ffffff?text=Celebra%C3%A7%C3%A3o", legenda: "Celebração" }
+  ]
+},
 
   // ---------- REDES SOCIAIS / CONTATO ----------
   contato: {
