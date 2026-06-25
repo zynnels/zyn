@@ -4,13 +4,1465 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZYN ON TOP – Clã Minecraft</title>
-    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* =====================================================
+           ZYN ON TOP - ESTILOS COMPLETOS
+           ===================================================== */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: #000a1a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #0044cc, #0066ff, #0044cc);
+            border-radius: 10px;
+        }
+
+        /* ===== BOTÕES ===== */
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: linear-gradient(135deg, #0044cc, #0066ff, #0044cc);
+            background-size: 200% 200%;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(0, 68, 204, 0.4);
+            animation: btnAnim 3s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes btnAnim {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn i {
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 68, 204, 0.6);
+        }
+
+        /* ===== SEÇÕES ===== */
+        .section {
+            padding: 80px 0;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px) scale(0.98);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #0044cc, #0066ff, #0044cc, transparent);
+        }
+
+        .section.bg-dark {
+            background: linear-gradient(180deg, #000a1a, #001133);
+        }
+
+        .section.bg-light {
+            background: linear-gradient(180deg, #001133, #000a1a);
+        }
+
+        .section h2 {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #0044cc, #0066ff, #3399ff, #0044cc);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradienteAnim 4s ease infinite;
+            letter-spacing: 3px;
+        }
+
+        @keyframes gradienteAnim {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .section h2 i {
+            -webkit-text-fill-color: initial;
+            color: #0066ff;
+            margin-right: 10px;
+        }
+
+        .section .subtitulo {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #66aaff;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000a1a, #001133);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(0, 68, 204, 0.15), transparent 70%);
+            z-index: 0;
+            animation: heroGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content .badge {
+            display: inline-block;
+            padding: 8px 25px;
+            background: rgba(0, 68, 204, 0.2);
+            border: 2px solid #0044cc;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #66aaff;
+            margin-bottom: 20px;
+            animation: pulseBadge 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseBadge {
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(0, 68, 204, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(0, 68, 204, 0.6);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff, #66aaff, #0044cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 5px;
+        }
+
+        .hero-content .destaque {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0066ff;
+            margin-bottom: 10px;
+            letter-spacing: 8px;
+            text-shadow: 0 0 30px rgba(0, 68, 204, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            color: #66aaff;
+            letter-spacing: 2px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .hero-stats .stat {
+            text-align: center;
+        }
+
+        .hero-stats .stat .num {
+            display: block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #0066ff;
+            text-shadow: 0 0 30px rgba(0, 68, 204, 0.3);
+        }
+
+        .hero-stats .stat .label {
+            font-size: 0.9rem;
+            color: #66aaff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            color: #66aaff;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.5;
+        }
+
+        .scroll-indicator i {
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        /* ===== PARTÍCULAS ===== */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #0066ff;
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* ===== SOBRE ===== */
+        .sobre-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .sobre-content .historia p {
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+            color: #88bbff;
+            padding-left: 20px;
+            border-left: 3px solid #0044cc;
+            transition: all 0.3s;
+        }
+
+        .sobre-content .historia p:hover {
+            border-left-color: #0066ff;
+            padding-left: 25px;
+            color: #fff;
+        }
+
+        .sobre-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .sobre-tags .tag {
+            padding: 6px 16px;
+            background: rgba(0, 68, 204, 0.15);
+            border: 1px solid rgba(0, 68, 204, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #66aaff;
+            transition: all 0.3s;
+        }
+
+        .sobre-tags .tag:hover {
+            background: rgba(0, 68, 204, 0.3);
+            border-color: #0044cc;
+            transform: scale(1.05);
+        }
+
+        .sobre-img {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 68, 204, 0.3);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #001133, #000a1a);
+        }
+
+        .sobre-img::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(135deg, #0044cc, #0066ff, #3399ff, #0044cc);
+            background-size: 400% 400%;
+            border-radius: 22px;
+            z-index: -1;
+            animation: bordaAnim 4s ease infinite;
+        }
+
+        @keyframes bordaAnim {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .sobre-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        .sobre-img .img-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 68, 204, 0.6);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .sobre-img:hover .img-overlay {
+            opacity: 1;
+        }
+
+        .sobre-img .img-overlay i {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        /* ===== SKIN 3D ===== */
+        .membro-card img.skin-3d {
+            width: 100%;
+            max-width: 130px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+            image-rendering: auto;
+            border-radius: 0;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+            transition: transform 0.3s;
+        }
+
+        .membro-card:hover img.skin-3d {
+            transform: scale(1.05);
+        }
+
+        .membro-card {
+            text-align: center;
+            background: rgba(0, 68, 204, 0.05);
+            padding: 20px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 68, 204, 0.2);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+        }
+
+        .membro-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 68, 204, 0.05), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .membro-card:hover::before {
+            opacity: 1;
+        }
+
+        .membro-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #0044cc;
+            box-shadow: 0 15px 50px rgba(0, 68, 204, 0.2);
+            background: rgba(0, 68, 204, 0.1);
+        }
+
+        .membro-card h3 {
+            font-size: 1rem;
+            margin-bottom: 3px;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .membro-card p {
+            color: #66aaff;
+            font-size: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .membro-card .membro-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            animation: glowBadge 2s ease-in-out infinite;
+        }
+
+        @keyframes glowBadge {
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.2) rotate(10deg);
+            }
+        }
+
+        /* ===== SISTEMA DE ABAS ===== */
+        .membros-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .membros-stats .total-membros {
+            font-size: 1.2rem;
+            color: #66aaff;
+            font-weight: 700;
+        }
+
+        .membros-filtros {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .membro-filtro-btn {
+            padding: 10px 20px;
+            background: rgba(0, 68, 204, 0.1);
+            border: 2px solid rgba(0, 68, 204, 0.2);
+            border-radius: 50px;
+            color: #66aaff;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .membro-filtro-btn .badge-count {
+            background: rgba(0, 68, 204, 0.2);
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: #66aaff;
+            transition: all 0.3s;
+        }
+
+        .membro-filtro-btn:hover {
+            background: rgba(0, 68, 204, 0.2);
+            border-color: #0044cc;
+            transform: translateY(-2px);
+        }
+
+        .membro-filtro-btn.active {
+            background: linear-gradient(135deg, #0044cc, #0066ff);
+            border-color: #0044cc;
+            color: #fff;
+            box-shadow: 0 5px 25px rgba(0, 68, 204, 0.3);
+        }
+
+        .membro-filtro-btn.active .badge-count {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .cargo-grid {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            animation: fadeInGrid 0.5s ease;
+        }
+
+        .cargo-grid.active {
+            display: grid;
+        }
+
+        @keyframes fadeInGrid {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .membros-grid-wrapper {
+            min-height: 200px;
+        }
+
+        /* ===== MEMBRO DO MÊS ===== */
+        .membro-mes-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .membro-mes-card {
+            background: linear-gradient(135deg, rgba(0, 68, 204, 0.15), rgba(0, 68, 204, 0.05));
+            border: 2px solid #0044cc;
+            border-radius: 25px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(0, 68, 204, 0.2);
+        }
+
+        .membro-mes-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 68, 204, 0.1), transparent 70%);
+            animation: glowRotate 10s linear infinite;
+        }
+
+        @keyframes glowRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .membro-mes-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0044cc, #0066ff);
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            animation: pulseBadge 2s ease-in-out infinite;
+        }
+
+        .membro-mes-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .membro-mes-foto {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .membro-mes-foto img.skin-3d {
+            width: 150px;
+            height: auto;
+            display: block;
+            image-rendering: auto;
+            border-radius: 0;
+            border: none;
+            background: transparent;
+        }
+
+        .membro-mes-destaque {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ffd700, #ff6b00);
+            padding: 4px 15px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #000;
+            white-space: nowrap;
+            animation: pulseDestaque 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseDestaque {
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.05);
+            }
+        }
+
+        .membro-mes-info {
+            flex: 1;
+        }
+
+        .membro-mes-info h3 {
+            font-size: 2rem;
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .membro-mes-cargo {
+            color: #66aaff;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .membro-mes-motivo {
+            color: #88bbff;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background: rgba(0, 68, 204, 0.1);
+            border-left: 3px solid #0044cc;
+            border-radius: 5px;
+        }
+
+        .membro-mes-stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .membro-mes-stats span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #66aaff;
+            font-size: 0.95rem;
+            background: rgba(0, 68, 204, 0.1);
+            padding: 5px 15px;
+            border-radius: 50px;
+        }
+
+        .membro-mes-stats span i {
+            color: #0044cc;
+        }
+
+        /* ===== CONQUISTAS ===== */
+        .conquistas-lista {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .conquistas-lista li {
+            padding: 18px 25px;
+            margin-bottom: 12px;
+            background: rgba(0, 68, 204, 0.08);
+            border-left: 4px solid #0044cc;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            color: #88bbff;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .conquistas-lista li::before {
+            content: '◆';
+            color: #0044cc;
+            margin-right: 12px;
+            font-size: 0.8rem;
+        }
+
+        .conquistas-lista li:hover {
+            background: rgba(0, 68, 204, 0.15);
+            border-left-color: #0066ff;
+            color: #fff;
+            transform: translateX(10px);
+        }
+
+        /* ===== MÍDIAS ===== */
+        .midias-filtros {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filtro-btn {
+            padding: 10px 25px;
+            background: rgba(0, 68, 204, 0.1);
+            border: 2px solid rgba(0, 68, 204, 0.2);
+            border-radius: 50px;
+            color: #66aaff;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filtro-btn:hover {
+            background: rgba(0, 68, 204, 0.2);
+            border-color: #0044cc;
+            transform: translateY(-2px);
+        }
+
+        .filtro-btn.active {
+            background: linear-gradient(135deg, #0044cc, #0066ff);
+            border-color: #0044cc;
+            color: #fff;
+            box-shadow: 0 5px 25px rgba(0, 68, 204, 0.3);
+        }
+
+        .midias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .midia-item {
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(0, 68, 204, 0.05);
+            border: 1px solid rgba(0, 68, 204, 0.1);
+            transition: all 0.4s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .midia-item:hover {
+            transform: translateY(-5px);
+            border-color: #0044cc;
+            box-shadow: 0 10px 40px rgba(0, 68, 204, 0.15);
+        }
+
+        .midia-item.imagem {
+            position: relative;
+            cursor: pointer;
+            min-height: 200px;
+            background: linear-gradient(135deg, #001133, #000a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .midia-item.imagem img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .midia-item.imagem .placeholder-midia {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #66aaff;
+            font-size: 3rem;
+            gap: 10px;
+            padding: 40px;
+        }
+
+        .midia-item.imagem .placeholder-midia span {
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+
+        .midia-item.imagem .midia-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s;
+        }
+
+        .midia-item.imagem:hover .midia-overlay {
+            opacity: 1;
+        }
+
+        .midia-item.imagem .midia-overlay i {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .midia-item.imagem .midia-overlay span {
+            color: #fff;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .midia-item.video {
+            padding: 0;
+        }
+
+        .midia-item.video .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .midia-item.video .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .midia-item.video video {
+            width: 100%;
+            display: block;
+            max-height: 300px;
+            background: #000;
+        }
+
+        .midia-item .midia-legenda {
+            padding: 12px 15px;
+            color: #88bbff;
+            font-size: 0.95rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 68, 204, 0.1);
+        }
+
+        /* ===== GALERIA ===== */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .galeria-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.4s;
+            min-height: 200px;
+            background: linear-gradient(135deg, #001133, #000a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .galeria-item.principal {
+            grid-row: span 2;
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .galeria-item .placeholder-galeria {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #66aaff;
+            font-size: 3rem;
+            gap: 10px;
+            padding: 40px;
+        }
+
+        .galeria-item .placeholder-galeria span {
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+
+        .galeria-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(0, 68, 204, 0.2);
+        }
+
+        .galeria-item .galeria-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s;
+        }
+
+        .galeria-item:hover .galeria-overlay {
+            opacity: 1;
+        }
+
+        .galeria-item .galeria-overlay i {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .galeria-item .galeria-overlay span {
+            color: #fff;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* ===== REDES SOCIAIS ===== */
+        .redes-sociais {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        .rede-card {
+            display: flex;
+            align-items: center;
+            padding: 20px 25px;
+            background: rgba(0, 68, 204, 0.05);
+            border: 1px solid rgba(0, 68, 204, 0.2);
+            border-radius: 15px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.4s;
+            gap: 15px;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rede-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 68, 204, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .rede-card:hover::before {
+            opacity: 1;
+        }
+
+        .rede-card:hover {
+            transform: translateY(-5px);
+            border-color: #0044cc;
+            box-shadow: 0 10px 40px rgba(0, 68, 204, 0.2);
+        }
+
+        .rede-card .rede-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .rede-card.discord .rede-icon {
+            background: #5865F2;
+            color: #fff;
+        }
+
+        .rede-card.instagram .rede-icon {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: #fff;
+        }
+
+        .rede-card.email .rede-icon {
+            background: #0044cc;
+            color: #fff;
+        }
+
+        .rede-card .rede-info {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .rede-card .rede-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+
+        .rede-card .rede-info p {
+            font-size: 0.85rem;
+            color: #66aaff;
+        }
+
+        .rede-card .rede-arrow {
+            font-size: 1.2rem;
+            color: #66aaff;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .rede-card:hover .rede-arrow {
+            transform: translateX(8px);
+        }
+
+        /* ===== STATUS ONLINE ===== */
+        .contato-bonus {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .status-online {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 25px;
+            background: rgba(0, 68, 204, 0.1);
+            border-radius: 50px;
+            border: 1px solid rgba(0, 68, 204, 0.2);
+        }
+
+        .pulse-dot {
+            width: 12px;
+            height: 12px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: pulseDot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+        }
+
+        .status-online .online-count {
+            font-weight: 700;
+            color: #0066ff;
+            font-size: 1.2rem;
+        }
+
+        /* ===== RODAPÉ ===== */
+        footer {
+            background: #00050f;
+            color: #66aaff;
+            padding: 40px 0 20px;
+            border-top: 2px solid rgba(0, 68, 204, 0.2);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #0066ff;
+        }
+
+        .footer-logo p {
+            color: #66aaff;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #66aaff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-links a i {
+            margin-right: 6px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 68, 204, 0.1);
+            border: 1px solid rgba(0, 68, 204, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #66aaff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: #0044cc;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 68, 204, 0.1);
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: #66aaff;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 992px) {
+            .sobre-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .galeria-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .galeria-item.principal {
+                grid-row: span 1;
+            }
+            .redes-sociais {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .hero-stats {
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+            .hero-stats .stat .num {
+                font-size: 2rem;
+            }
+            .section h2 {
+                font-size: 2rem;
+            }
+            .membros-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .membros-filtros {
+                justify-content: center;
+            }
+            .membro-filtro-btn {
+                font-size: 0.8rem;
+                padding: 8px 14px;
+            }
+            .cargo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 15px;
+            }
+            .midias-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .membro-mes-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .membro-mes-stats {
+                justify-content: center;
+            }
+            .membro-mes-foto img.skin-3d {
+                width: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .section h2 {
+                font-size: 1.6rem;
+            }
+            .membros-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .membro-card {
+                padding: 12px 10px;
+            }
+            .membro-card img.skin-3d {
+                max-width: 80px;
+            }
+            .membros-filtros {
+                gap: 8px;
+            }
+            .membro-filtro-btn {
+                font-size: 0.7rem;
+                padding: 6px 10px;
+            }
+            .membro-filtro-btn .badge-count {
+                font-size: 0.65rem;
+                padding: 1px 7px;
+            }
+            .cargo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 10px;
+            }
+            .conquistas-lista li {
+                font-size: 0.95rem;
+                padding: 12px 15px;
+            }
+            .midias-grid {
+                grid-template-columns: 1fr;
+            }
+            .midias-filtros {
+                gap: 10px;
+            }
+            .filtro-btn {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+            .membro-mes-foto img.skin-3d {
+                width: 100px;
+            }
+            .membro-mes-info h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <!-- ===== HERO ===== -->
-    <header class="hero" id="home">
+    <header class="hero" id="home" style="background-image: url('imagens/hero.jpg'); background-size: cover; background-position: center;">
         <div class="hero-content">
             <span class="badge">🚀 Clã Oficial</span>
             <h1>ZYN ON TOP</h1>
@@ -48,8 +1500,7 @@
                     </div>
                 </div>
                 <div class="sobre-img">
-                    <img src="imagens/cla.png" alt="Sobre o clã" 
-                         onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #001133, #000a1a)'" />
+                    <img src="imagens/cla.png" alt="Sobre o clã" id="sobreImg" />
                     <div class="img-overlay"><i class="fas fa-play-circle"></i></div>
                 </div>
             </div>
@@ -61,9 +1512,7 @@
         <div class="container">
             <h2><i class="fas fa-crown"></i> Fundadores</h2>
             <p class="subtitulo">Os criadores da ZYN ON TOP</p>
-            <div class="membros-grid" id="fundadores-grid">
-                <!-- Gerado pelo JavaScript -->
-            </div>
+            <div class="membros-grid" id="fundadores-grid"></div>
         </div>
     </section>
 
@@ -72,9 +1521,7 @@
         <div class="container">
             <h2><i class="fas fa-user-group"></i> Membros</h2>
             <p class="subtitulo">Nossa equipe atual</p>
-            <div id="membros-container">
-                <!-- Gerado pelo JavaScript com sistema de abas -->
-            </div>
+            <div id="membros-container"></div>
         </div>
     </section>
 
@@ -83,9 +1530,7 @@
         <div class="container">
             <h2><i class="fas fa-star"></i> Player do Mês</h2>
             <p class="subtitulo">O membro mais foda do mês!</p>
-            <div class="membro-mes-container" id="membro-mes-container">
-                <!-- Gerado pelo JavaScript -->
-            </div>
+            <div class="membro-mes-container" id="membro-mes-container"></div>
         </div>
     </section>
 
@@ -94,9 +1539,7 @@
         <div class="container">
             <h2><i class="fas fa-trophy"></i> Conquistas</h2>
             <p class="subtitulo">Nossas vitórias</p>
-            <ul class="conquistas-lista" id="conquistas-lista">
-                <!-- Gerado pelo JavaScript -->
-            </ul>
+            <ul class="conquistas-lista" id="conquistas-lista"></ul>
         </div>
     </section>
 
@@ -105,16 +1548,12 @@
         <div class="container">
             <h2><i class="fas fa-photo-video"></i> Mídias</h2>
             <p class="subtitulo">Prints e vídeos do clã</p>
-            
             <div class="midias-filtros">
                 <button class="filtro-btn active" data-filtro="todos">📸 Todos</button>
                 <button class="filtro-btn" data-filtro="imagem">🖼️ Imagens</button>
                 <button class="filtro-btn" data-filtro="video">🎬 Vídeos</button>
             </div>
-
-            <div class="midias-grid" id="midias-grid">
-                <!-- Gerado pelo JavaScript -->
-            </div>
+            <div class="midias-grid" id="midias-grid"></div>
         </div>
     </section>
 
@@ -123,9 +1562,7 @@
         <div class="container">
             <h2><i class="fas fa-image"></i> Galeria do Clã</h2>
             <p class="subtitulo">Nossos momentos juntos</p>
-            <div class="galeria-grid" id="galeria-grid">
-                <!-- Gerado pelo JavaScript -->
-            </div>
+            <div class="galeria-grid" id="galeria-grid"></div>
         </div>
     </section>
 
@@ -186,7 +1623,541 @@
         </div>
     </footer>
 
-    <script src="sitedata.js"></script>
-    <script src="script.js"></script>
+    <script>
+        // =====================================================
+        //  DADOS DO SITE
+        // =====================================================
+        const siteData = {
+            cabecalho: {
+                titulo: "ZYN ON TOP",
+                subtitulo: "Uma nova era",
+                imagemHeroi: "imagens/hero.jpg"
+            },
+            sobre: {
+                titulo: "Quem somos?",
+                historia: [
+                    "Somos um clã de minecraft focado em PvP/Build/Farm e evolução constante.",
+                    "Nossa missão é dominar o servidor com estratégia, amizade e muito treino.",
+                    "Uma clan em crescimento procurando pessoas para recrutar !."
+                ],
+                tags: ["⚔️ PvP", "🎮 Minecraft", "🤝 Amizade", "🚀 Evolução"],
+                imagemSobre: "imagens/cla.png"
+            },
+            fundadores: {
+                titulo: "Fundadores",
+                lista: [
+                    { nome: "zCrystalHex", cargo: "Fundador", foto: "https://visage.surgeplay.com/full/256/zCrystalHex" },
+                    { nome: "ZGodPowerX", cargo: "Owner", foto: "https://visage.surgeplay.com/full/256/ZGodPowerX" },
+                    { nome: "Asmodeus", cargo: "Lider", foto: "https://visage.surgeplay.com/full/256/Asmodeus" }
+                ]
+            },
+            membrosAtuais: {
+                titulo: "Membros",
+                altaElite: [
+                    { nome: "Elite_Evow", cargo: "Leader", foto: "https://visage.surgeplay.com/full/128/Elite_Evow" },
+                    { nome: "Lootier", cargo: "Leader", foto: "https://visage.surgeplay.com/full/128/Lootier" },
+                    { nome: "AkyraZ", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/AkyraZ" },
+                    { nome: "EuCoringando_", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/EuCoringando_" },
+                    { nome: "Sozyeon", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/Sozyeon" },
+                    { nome: "selfisdemons", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/selfisdemons" },
+                    { nome: "EoIcebbXz", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/EoIcebbXz" },
+                    { nome: "VxKaua", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/VxKaua" },
+                    { nome: "Baraaus", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Inject7", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "papo_de_passafome", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Sementinha", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "SanioMT", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Marconigamer13", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
+                ],
+                elite: [
+                    { nome: "Zakai_", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Zakai_" },
+                    { nome: "Itachi_Uchiha", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Itachi_Uchiha" },
+                    { nome: "The_Ghost", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/The_Ghost" },
+                    { nome: "GCplays_nn", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/GCplays_nn" },
+                    { nome: "whitemask", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/whitemask" },
+                    { nome: "piGabriel", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/piGabriel" },
+                    { nome: "edu2253", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/edu2253" },
+                    { nome: "Zuru", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Zuru" },
+                    { nome: "Senhor_Fornalha", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Senhor_Fornalha" },
+                    { nome: "Vexpelion", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Vexpelion" },
+                    { nome: "zyxkill", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/zyxkill" },
+                    { nome: "JuliaFlyffy", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "snoopaoPJL", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "El_Milobrzx", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Cachorro_Caramel", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Nexxiltyy", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Usuaria9036", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
+                ],
+                membro: [
+                    { nome: "perrinho2011", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/perrinho2011" },
+                    { nome: "Kishino", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Kishino" },
+                    { nome: "AllefMT", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/AllefMT" },
+                    { nome: "Bolsonaro_22", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Bolsonaro_22" },
+                    { nome: "KAISER_26", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/KAISER_26" },
+                    { nome: "Polar_gg", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Polar_gg" },
+                    { nome: "Phzin_yt", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Phzin_yt" },
+                    { nome: "Pensamentox", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Pensamentox" },
+                    { nome: "Sunyzinho", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Sunyzinho" },
+                    { nome: "naoseibobar", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/naoseibobar" },
+                    { nome: "Miguelboy008", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Miguelboy008" },
+                    { nome: "SnowpyOF", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/SnowpyOF" },
+                    { nome: "Roxinho", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Roxinho" },
+                    { nome: "zaza666", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/zaza666" },
+                    { nome: "Ywkuut", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Ywkuut" },
+                    { nome: "Weembu", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Weembu" },
+                    { nome: "kgzwPANTERA", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/kgzwPANTERA" },
+                    { nome: "L7ZXWK", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "TiaAmora", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "gabrielgg24187", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Igorrpl", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "b10pietro", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Abusandinho", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: ".Uchina", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: ".Silvrex01", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Itctrem", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "GodLipe7272", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "GalaticosPlay1K", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Dol7hin", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "DiegoBaam", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Lowfigth", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Loosla", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "jeguemakechina", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "JasonMorumbi", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Sou_Home", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Radis_yt", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Zero15337", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "ydemonblatant__", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Vynzxx", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Lirioarthur37", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "zFel1pe", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
+                ],
+                tester: [
+                    { nome: "Bayo", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/Bayo" },
+                    { nome: "Soul_Hunter13", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/Soul_Hunter13" },
+                    { nome: "EusouBonito", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "Tobiaspug000", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: "maja0102", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+                    { nome: ".Lucan4441445", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
+                ]
+            },
+            membroMes: {
+                titulo: "Player do Mês",
+                subtitulo: "O membro mais foda do mês!",
+                mes: "Junho 2026",
+                membro: {
+                    nome: "Lootier",
+                    cargo: "Leader",
+                    foto: "https://visage.surgeplay.com/full/256/Lootier",
+                    motivo: "🏆 Quem mais ajudou o clã a crescer",
+                    destaque: "🚀 W Lootier !"
+                }
+            },
+            conquistas: {
+                titulo: "Conquistas da ZYN",
+                itens: [
+                    "🏆 Em busca da glória infinita !",
+                    "⚔️ Preparando para ganhar a LIGA DE CLÃS",
+                    "🔥 Clã em evolução constante",
+                    "👑 Rumo ao topo"
+                ]
+            },
+            midias: {
+                titulo: "Mídias",
+                subtitulo: "Prints e vídeos do clã",
+                lista: [
+                    { tipo: "imagem", src: "imagens/cla2.png", legenda: "Clã reunido", destaque: true },
+                    { tipo: "imagem", src: "imagens/cla3.png", legenda: "Guerra épica" },
+                    { tipo: "imagem", src: "imagens/trofeu.png", legenda: "Troféu conquistado" },
+                    { tipo: "imagem", src: "", legenda: "Em breve - Print 4" },
+                    { tipo: "video", tipoVideo: "youtube", id: "dQw4w9WgXcQ", legenda: "Em breve - Vídeo 1" },
+                    { tipo: "video", tipoVideo: "mp4", src: "", legenda: "Em breve - Vídeo 2" }
+                ]
+            },
+            galeria: {
+                titulo: "Galeria do Clã",
+                imagens: [
+                    { src: "imagens/cla.png", legenda: "ZYN ON TOP", destaque: true },
+                    { src: "imagens/cla2.png", legenda: "Momento épico" },
+                    { src: "imagens/cla3.png", legenda: "Guerra" },
+                    { src: "imagens/trofeu.png", legenda: "Celebração" }
+                ]
+            },
+            contato: {
+                titulo: "Quer entrar na ZYN?",
+                texto: "Venha ser membro da ZYN ON TOP!",
+                discord: "https://discord.gg/hWz7HAsuqS",
+                instagram: "https://instagram.com/thezynelsoficial",
+                email: "zynontop@gmail.com",
+                onlineCount: 93
+            },
+            rodape: {
+                texto: "© 2026 ZYN ON TOP – Uma nova era !"
+            }
+        };
+
+        // =====================================================
+        //  SCRIPT PRINCIPAL
+        // =====================================================
+        document.addEventListener('DOMContentLoaded', function() {
+
+            console.log('🚀 ZYN ON TOP carregando...');
+
+            // ===== PARTÍCULAS =====
+            function createParticles() {
+                const container = document.getElementById('particles');
+                if (!container) return;
+                for (let i = 0; i < 50; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.width = (Math.random() * 4 + 2) + 'px';
+                    particle.style.height = particle.style.width;
+                    particle.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                    particle.style.animationDelay = (Math.random() * 10) + 's';
+                    particle.style.opacity = Math.random() * 0.5 + 0.2;
+                    container.appendChild(particle);
+                }
+            }
+            createParticles();
+
+            // ===== SOBRE - IMAGEM DIRETA =====
+            const sobreImg = document.getElementById('sobreImg');
+            if (sobreImg && siteData.sobre) {
+                sobreImg.src = siteData.sobre.imagemSobre;
+                sobreImg.onerror = function() {
+                    this.style.display = 'none';
+                };
+                console.log('✅ Imagem do sobre:', siteData.sobre.imagemSobre);
+            }
+
+            // ===== FUNDADORES =====
+            const fundadoresGrid = document.getElementById('fundadores-grid');
+            if (fundadoresGrid && siteData.fundadores) {
+                fundadoresGrid.innerHTML = siteData.fundadores.lista.map((membro, index) => `
+                    <div class="membro-card" style="transition-delay: ${index * 0.1}s">
+                        <img src="${membro.foto}" alt="${membro.nome}" class="skin-3d" loading="lazy" 
+                             onerror="this.style.display='none'">
+                        <h3>${membro.nome}</h3>
+                        <p>${membro.cargo}</p>
+                        <div class="membro-badge">👑</div>
+                    </div>
+                `).join('');
+                console.log('✅ Fundadores carregados:', siteData.fundadores.lista.length);
+            }
+
+            // ===== MEMBROS =====
+            const membrosContainer = document.getElementById('membros-container');
+            if (membrosContainer && siteData.membrosAtuais) {
+
+                const cargos = {
+                    'altaElite': { label: '⭐ Alta Elite', icon: 'fa-star', cor: '#ffd700' },
+                    'elite': { label: '⚔️ Elite', icon: 'fa-shield', cor: '#00ccff' },
+                    'membro': { label: '👤 Membros', icon: 'fa-user', cor: '#66aaff' },
+                    'tester': { label: '🧪 Testers', icon: 'fa-flask', cor: '#99ddff' }
+                };
+
+                const totalMembros = Object.values(siteData.membrosAtuais).reduce((acc, arr) => acc + arr.length, 0);
+
+                let html = `
+                    <div class="membros-header">
+                        <div class="membros-stats">
+                            <span class="total-membros">👥 ${totalMembros} Membros</span>
+                        </div>
+                        <div class="membros-filtros">
+                `;
+
+                let first = true;
+                Object.keys(cargos).forEach((key) => {
+                    const count = siteData.membrosAtuais[key] ? siteData.membrosAtuais[key].length : 0;
+                    html += `
+                        <button class="membro-filtro-btn ${first ? 'active' : ''}" data-cargo="${key}">
+                            <i class="fas ${cargos[key].icon}"></i> ${cargos[key].label}
+                            <span class="badge-count">${count}</span>
+                        </button>
+                    `;
+                    first = false;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                    <div class="membros-grid-wrapper">
+                `;
+
+                let firstGrid = true;
+                Object.keys(cargos).forEach((key) => {
+                    const membros = siteData.membrosAtuais[key] || [];
+                    html += `
+                        <div class="cargo-grid ${firstGrid ? 'active' : ''}" id="cargo-${key}">
+                            ${membros.map((membro, i) => `
+                                <div class="membro-card" style="transition-delay: ${i * 0.03}s">
+                                    <img src="${membro.foto}" alt="${membro.nome}" class="skin-3d" loading="lazy"
+                                         onerror="this.style.display='none'">
+                                    <h3>${membro.nome}</h3>
+                                    <p>${membro.cargo}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    firstGrid = false;
+                });
+
+                html += `</div>`;
+                membrosContainer.innerHTML = html;
+
+                // Abas
+                const filtroBtns = document.querySelectorAll('.membro-filtro-btn');
+                const cargoGrids = document.querySelectorAll('.cargo-grid');
+                filtroBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        filtroBtns.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        const cargo = this.dataset.cargo;
+                        cargoGrids.forEach(grid => {
+                            grid.classList.remove('active');
+                            if (grid.id === `cargo-${cargo}`) {
+                                grid.classList.add('active');
+                            }
+                        });
+                    });
+                });
+                console.log('✅ Membros carregados!');
+            }
+
+            // ===== MEMBRO DO MÊS =====
+            const membroMesContainer = document.getElementById('membro-mes-container');
+            if (membroMesContainer && siteData.membroMes) {
+                const m = siteData.membroMes.membro;
+                membroMesContainer.innerHTML = `
+                    <div class="membro-mes-card">
+                        <div class="membro-mes-badge">⭐ ${siteData.membroMes.mes}</div>
+                        <div class="membro-mes-content">
+                            <div class="membro-mes-foto">
+                                <img src="${m.foto}" alt="${m.nome}" class="skin-3d" loading="lazy"
+                                     onerror="this.style.display='none'">
+                                <div class="membro-mes-destaque">${m.destaque || '🏆 Destaque'}</div>
+                            </div>
+                            <div class="membro-mes-info">
+                                <h3>${m.nome}</h3>
+                                <p class="membro-mes-cargo">${m.cargo}</p>
+                                <p class="membro-mes-motivo">${m.motivo || 'Membro foda do mês!'}</p>
+                                <div class="membro-mes-stats">
+                                    <span><i class="fas fa-trophy"></i> Destaque</span>
+                                    <span><i class="fas fa-fire"></i> MVP</span>
+                                    <span><i class="fas fa-crown"></i> Top</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                console.log('✅ Membro do mês carregado');
+            }
+
+            // ===== CONQUISTAS =====
+            const conquistasLista = document.getElementById('conquistas-lista');
+            if (conquistasLista && siteData.conquistas) {
+                conquistasLista.innerHTML = siteData.conquistas.itens.map(item =>
+                    `<li>${item}</li>`
+                ).join('');
+                console.log('✅ Conquistas carregadas');
+            }
+
+            // ===== MÍDIAS =====
+            const midiasGrid = document.getElementById('midias-grid');
+            if (midiasGrid && siteData.midias) {
+                midiasGrid.innerHTML = siteData.midias.lista.map(midia => {
+                    if (midia.tipo === 'imagem') {
+                        if (midia.src && midia.src !== '') {
+                            return `
+                                <div class="midia-item imagem" data-tipo="imagem">
+                                    <img src="${midia.src}" alt="${midia.legenda}" loading="lazy"
+                                         onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #001133, #000a1a)'">
+                                    <div class="midia-overlay">
+                                        <i class="fas fa-search-plus"></i>
+                                        <span>${midia.legenda}</span>
+                                    </div>
+                                </div>
+                            `;
+                        } else {
+                            return `
+                                <div class="midia-item imagem" data-tipo="imagem">
+                                    <div class="placeholder-midia">
+                                        <i class="fas fa-image"></i>
+                                        <span>${midia.legenda}</span>
+                                    </div>
+                                    <div class="midia-overlay">
+                                        <i class="fas fa-search-plus"></i>
+                                        <span>${midia.legenda}</span>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    } else if (midia.tipo === 'video') {
+                        if (midia.tipoVideo === 'youtube') {
+                            return `
+                                <div class="midia-item video" data-tipo="video">
+                                    <div class="video-container">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/${midia.id}" 
+                                            title="${midia.legenda}"
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                    <div class="midia-legenda">${midia.legenda}</div>
+                                </div>
+                            `;
+                        }
+                    }
+                    return '';
+                }).join('');
+                console.log('✅ Mídias carregadas');
+            }
+
+            // ===== FILTROS MÍDIAS =====
+            const filtros = document.querySelectorAll('.filtro-btn');
+            filtros.forEach(filtro => {
+                filtro.addEventListener('click', function() {
+                    filtros.forEach(f => f.classList.remove('active'));
+                    this.classList.add('active');
+                    const filtroTipo = this.dataset.filtro;
+                    const midiasItems = document.querySelectorAll('.midia-item');
+                    midiasItems.forEach(item => {
+                        if (filtroTipo === 'todos') {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = item.dataset.tipo === filtroTipo ? 'block' : 'none';
+                        }
+                    });
+                });
+            });
+
+            // ===== GALERIA =====
+            const galeriaGrid = document.getElementById('galeria-grid');
+            if (galeriaGrid && siteData.galeria) {
+                galeriaGrid.innerHTML = siteData.galeria.imagens.map(img => {
+                    if (img.src && img.src !== '') {
+                        return `
+                            <div class="galeria-item ${img.destaque ? 'principal' : ''}">
+                                <img src="${img.src}" alt="${img.legenda}" loading="lazy"
+                                     onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #001133, #000a1a)'">
+                                <div class="galeria-overlay">
+                                    <i class="fas fa-expand"></i>
+                                    <span>${img.legenda}</span>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        return `
+                            <div class="galeria-item ${img.destaque ? 'principal' : ''}">
+                                <div class="placeholder-galeria">
+                                    <i class="fas fa-image"></i>
+                                    <span>${img.legenda}</span>
+                                </div>
+                                <div class="galeria-overlay">
+                                    <i class="fas fa-expand"></i>
+                                    <span>${img.legenda}</span>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }).join('');
+                console.log('✅ Galeria carregada');
+            }
+
+            // ===== ONLINE COUNT =====
+            const onlineCount = document.querySelector('.online-count');
+            if (onlineCount && siteData.contato) {
+                onlineCount.textContent = siteData.contato.onlineCount || 0;
+            }
+
+            // ===== ANIMAÇÃO DE NÚMEROS =====
+            function animateNumbers() {
+                const counters = document.querySelectorAll('.num');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    let current = 0;
+                    const increment = Math.ceil(target / 40);
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = current;
+                        }
+                    }, 50);
+                });
+            }
+
+            // ===== OBSERVER PARA SCROLL =====
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // ===== ANIMAÇÃO DOS CARDS =====
+            function animateCards() {
+                document.querySelectorAll('.membro-card, .rede-card, .midia-item, .galeria-item').forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    }, 100 * index);
+                });
+            }
+
+            // ===== INICIAR ANIMAÇÕES =====
+            setTimeout(() => {
+                animateNumbers();
+                animateCards();
+            }, 300);
+
+            // ===== SCROLL SUAVE =====
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // ===== PARALLAX =====
+            window.addEventListener('scroll', () => {
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    hero.style.backgroundPositionY = window.pageYOffset * 0.3 + 'px';
+                }
+            });
+
+            // ===== EFEITO DE TILT =====
+            document.querySelectorAll('.membro-card').forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+                });
+            });
+
+            console.log('✅ ZYN ON TOP carregado com sucesso!');
+        });
+    </script>
 </body>
 </html>
