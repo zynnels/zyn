@@ -7,7 +7,7 @@ const siteData = {
   cabecalho: {
     titulo: "ZYN ON TOP",
     subtitulo: "Uma nova era",
-    imagemHeroi: "imagens/hero.jpg"  // ← VOCÊ TEM hero.jpg
+    imagemHeroi: "imagens/hero.jpg"
   },
 
   // ---------- SOBRE O CLÃ ----------
@@ -19,7 +19,7 @@ const siteData = {
       "Uma clan em crescimento procurando pessoas para recrutar !."
     ],
     tags: ["⚔️ PvP", "🎮 Minecraft", "🤝 Amizade", "🚀 Evolução"],
-    imagemSobre: "imagens/cla.png"  // ← VOCÊ TEM cla.png
+    imagemSobre: "imagens/cla.png"
   },
 
   // ---------- FUNDADORES ----------
@@ -35,10 +35,7 @@ const siteData = {
   // ---------- MEMBROS ATUAIS ----------
   membrosAtuais: {
     titulo: "Membros",
-    
-    // ---- ALTA ELITE ----
     altaElite: [
-      // Com skin original
       { nome: "Elite_Evow", cargo: "Leader", foto: "https://visage.surgeplay.com/full/128/Elite_Evow" },
       { nome: "Lootier", cargo: "Leader", foto: "https://visage.surgeplay.com/full/128/Lootier" },
       { nome: "AkyraZ", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/AkyraZ" },
@@ -47,8 +44,6 @@ const siteData = {
       { nome: "selfisdemons", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/selfisdemons" },
       { nome: "EoIcebbXz", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/EoIcebbXz" },
       { nome: "VxKaua", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/VxKaua" },
-      
-      // Sem skin (mopomo350)
       { nome: "Baraaus", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "Inject7", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "papo_de_passafome", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
@@ -56,10 +51,7 @@ const siteData = {
       { nome: "SanioMT", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "Marconigamer13", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
     ],
-    
-    // ---- ELITE ----
     elite: [
-      // Com skin original
       { nome: "Zakai_", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Zakai_" },
       { nome: "Itachi_Uchiha", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Itachi_Uchiha" },
       { nome: "The_Ghost", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/The_Ghost" },
@@ -71,8 +63,6 @@ const siteData = {
       { nome: "Senhor_Fornalha", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Senhor_Fornalha" },
       { nome: "Vexpelion", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Vexpelion" },
       { nome: "zyxkill", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/zyxkill" },
-      
-      // Sem skin (mopomo350)
       { nome: "JuliaFlyffy", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "snoopaoPJL", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "El_Milobrzx", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
@@ -80,10 +70,7 @@ const siteData = {
       { nome: "Nexxiltyy", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "Usuaria9036", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
     ],
-    
-    // ---- MEMBRO ----
     membro: [
-      // Com skin original
       { nome: "perrinho2011", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/perrinho2011" },
       { nome: "Kishino", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Kishino" },
       { nome: "AllefMT", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/AllefMT" },
@@ -101,8 +88,6 @@ const siteData = {
       { nome: "Ywkuut", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Ywkuut" },
       { nome: "Weembu", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Weembu" },
       { nome: "kgzwPANTERA", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/kgzwPANTERA" },
-      
-      // Sem skin (mopomo350)
       { nome: "L7ZXWK", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "TiaAmora", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "gabrielgg24187", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
@@ -128,14 +113,9 @@ const siteData = {
       { nome: "Lirioarthur37", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "zFel1pe", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
     ],
-    
-    // ---- TESTER ----
     tester: [
-      // Com skin original
       { nome: "Bayo", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/Bayo" },
       { nome: "Soul_Hunter13", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/Soul_Hunter13" },
-      
-      // Sem skin (mopomo350)
       { nome: "EusouBonito", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "Tobiaspug000", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "maja0102", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
@@ -168,21 +148,39 @@ const siteData = {
     ]
   },
 
-  // ---------- MÍDIAS (USANDO SUAS IMAGENS) ----------
-  midias: {
-    titulo: "Mídias",
-    subtitulo: "Prints e vídeos do clã",
+  // ---------- SERVIDORES QUE JOGAMOS ----------
+  servidores: {
+    titulo: "Servidores que jogamos",
+    subtitulo: "Onde a ZYN ON TOP está presente",
     lista: [
-      { tipo: "imagem", src: "imagens/cla2.png", legenda: "Clã reunido", destaque: true },
-      { tipo: "imagem", src: "imagens/cla3.png", legenda: "Guerra épica" },
-      { tipo: "imagem", src: "imagens/trofeu.png", legenda: "Troféu conquistado" },
-      { tipo: "imagem", src: "", legenda: "Em breve - Print 4" },
-      { tipo: "video", tipoVideo: "youtube", id: "dQw4w9WgXcQ", legenda: "Em breve - Vídeo 1" },
-      { tipo: "video", tipoVideo: "mp4", src: "", legenda: "Em breve - Vídeo 2" }
+      {
+        nome: "Minezinho",
+        ip: "play.minezinho.com",
+        discord: "discord.gg/minezinho",
+        logo: "imagens/minezinho.png",
+        descricao: "Servidor principal da ZYN ON TOP! Aqui dominamos as guerras e fazemos a festa!",
+        status: "🟢 Online"
+      },
+      {
+        nome: "EnderCraft",
+        ip: "play.endercraft.com.br",
+        discord: "discord.gg/endercraft",
+        logo: "imagens/endercraft.png",
+        descricao: "Servidor de PvP 1.9+ com eventos diários. Sempre tem guerra boa!",
+        status: "🟢 Online"
+      },
+      {
+        nome: "RedSky",
+        ip: "redsky.com.br",
+        discord: "discord.gg/redsky",
+        logo: "imagens/redsky.png",
+        descricao: "Servidor de Factions onde construímos nossa base e dominamos o mapa!",
+        status: "🟡 Manutenção"
+      }
     ]
   },
 
-  // ---------- GALERIA (USANDO SUAS IMAGENS) ----------
+  // ---------- GALERIA ----------
   galeria: {
     titulo: "Galeria do Clã",
     imagens: [
