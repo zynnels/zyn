@@ -190,20 +190,20 @@ const siteData = {
         status: "🟢 Online"
       },
       {
-        nome: "EnderCraft",
-        ip: "play.endercraft.com.br",
-        discord: "discord.gg/endercraft",
+        nome: "Rede White",
+        ip: "jogar.redewhite.com.br",
+        discord: "discord.gg/redewhite",
         logo: "imagens/endercraft.png",
-        descricao: "Servidor de PvP 1.9+ com eventos diários. Sempre tem guerra boa!",
+        descricao: "Servidor de PvP 1.8 com eventos diários. Sempre tem guerra boa!",
         status: "🟢 Online"
       },
       {
-        nome: "RedSky",
-        ip: "redsky.com.br",
-        discord: "discord.gg/redsky",
+        nome: "Outro",
+        ip: "Outro",
+        discord: "discord.gg/outro",
         logo: "imagens/redsky.png",
-        descricao: "Servidor de Factions onde construímos nossa base e dominamos o mapa!",
-        status: "🟡 Manutenção"
+        descricao: "Não sei em mais servidores q vcs jogam..",
+        status: "🟡 Oi posso falar?"
       }
     ]
   },
