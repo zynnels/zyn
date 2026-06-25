@@ -219,14 +219,6 @@ const siteData = {
     ]
   },
 
-  // ---------- DISCORD ----------
-  discord: {
-    titulo: "Discord da ZYN",
-    subtitulo: "Conecte-se com a comunidade!",
-    serverId: "1461110454071066707", 
-    invite: "https://discord.gg/hWz7HAsuqS"
-  },
-
   // ---------- REDES SOCIAIS / CONTATO ----------
   contato: {
     titulo: "Quer entrar na ZYN?",
