@@ -1,5 +1,5 @@
 // =====================================================
-//  SCRIPT PRINCIPAL (ZYN ON TOP - VERSÃO FODA)
+//  SCRIPT PRINCIPAL (ZYN ON TOP - VERSÃO FINAL)
 // =====================================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -36,9 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (fundadoresGrid && siteData.fundadores) {
         fundadoresGrid.innerHTML = siteData.fundadores.lista.map((membro, index) => `
             <div class="membro-card" style="transition-delay: ${index * 0.1}s">
-                <div class="avatar-placeholder">
-                    <i class="fas fa-crown"></i>
-                </div>
+                <img src="${membro.foto}" alt="${membro.nome}" class="skin-3d" loading="lazy" 
+                     onerror="this.style.display='none'">
                 <h3>${membro.nome}</h3>
                 <p>${membro.cargo}</p>
                 <div class="membro-badge">👑</div>
@@ -47,14 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('✅ Fundadores carregados:', siteData.fundadores.lista.length);
     }
 
-    // =====================================================
-    //  MEMBROS COM SISTEMA DE ABAS
-    // =====================================================
-
+    // ===== MEMBROS COM SISTEMA DE ABAS =====
     const membrosContainer = document.getElementById('membros-container');
     if (membrosContainer && siteData.membrosAtuais) {
         
-        // Configuração dos cargos
         const cargos = {
             'altaElite': { label: '⭐ Alta Elite', icon: 'fa-star', cor: '#ffd700' },
             'elite': { label: '⚔️ Elite', icon: 'fa-shield', cor: '#00ccff' },
@@ -62,10 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'tester': { label: '🧪 Testers', icon: 'fa-flask', cor: '#99ddff' }
         };
 
-        // Conta total de membros
         const totalMembros = Object.values(siteData.membrosAtuais).reduce((acc, arr) => acc + arr.length, 0);
 
-        // Monta o HTML
         let html = `
             <div class="membros-header">
                 <div class="membros-stats">
@@ -74,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="membros-filtros" id="membros-filtros">
         `;
 
-        // Cria os botões das abas
         let first = true;
         Object.keys(cargos).forEach((key) => {
             const count = siteData.membrosAtuais[key] ? siteData.membrosAtuais[key].length : 0;
@@ -93,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="membros-grid-wrapper">
         `;
 
-        // Cria as grids de cada cargo
         let firstGrid = true;
         Object.keys(cargos).forEach((key) => {
             const membros = siteData.membrosAtuais[key] || [];
@@ -101,9 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="cargo-grid ${firstGrid ? 'active' : ''}" id="cargo-${key}">
                     ${membros.map((membro, i) => `
                         <div class="membro-card" style="transition-delay: ${i * 0.03}s">
-                            <div class="avatar-placeholder" style="background: linear-gradient(135deg, ${cargos[key].cor}, #0044cc);">
-                                <i class="fas ${cargos[key].icon}"></i>
-                            </div>
+                            <img src="${membro.foto}" alt="${membro.nome}" class="skin-3d" loading="lazy"
+                                 onerror="this.style.display='none'">
                             <h3>${membro.nome}</h3>
                             <p>${membro.cargo}</p>
                         </div>
@@ -122,11 +112,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         filtroBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                // Remove active de todos os botões
                 filtroBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-
-                // Mostra apenas o grid correspondente
                 const cargo = this.dataset.cargo;
                 cargoGrids.forEach(grid => {
                     grid.classList.remove('active');
@@ -149,9 +136,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="membro-mes-badge">⭐ ${siteData.membroMes.mes}</div>
                 <div class="membro-mes-content">
                     <div class="membro-mes-foto">
-                        <div class="avatar-placeholder" style="background: linear-gradient(135deg, #ffd700, #ff6b00);">
-                            <i class="fas fa-star"></i>
-                        </div>
+                        <img src="${m.foto}" alt="${m.nome}" class="skin-3d" loading="lazy"
+                             onerror="this.style.display='none'">
                         <div class="membro-mes-destaque">${m.destaque || '🏆 Destaque'}</div>
                     </div>
                     <div class="membro-mes-info">
