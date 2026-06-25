@@ -505,17 +505,33 @@ body {
     color: #fff;
 }
 
-/* ===== MEMBROS ===== */
-.membros-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
+/* ===== SKIN 3D EM PÉ - ESTILO PRINCIPAL ===== */
+.membro-card img.skin-3d {
+    width: 100%;
+    max-width: 130px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+    image-rendering: auto;
+    border-radius: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    transition: transform 0.3s;
+}
+
+.membro-card:hover img.skin-3d {
+    transform: scale(1.05);
+}
+
+.membro-card .avatar-placeholder {
+    display: none !important;
 }
 
 .membro-card {
     text-align: center;
     background: rgba(0, 68, 204, 0.05);
-    padding: 25px 20px;
+    padding: 20px 15px;
     border-radius: 20px;
     border: 1px solid rgba(0, 68, 204, 0.2);
     transition: all 0.4s;
@@ -548,30 +564,9 @@ body {
     background: rgba(0, 68, 204, 0.1);
 }
 
-.membro-card .avatar-placeholder {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    background: linear-gradient(135deg, #0044cc, #0066ff);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    color: #fff;
-    border: 4px solid #0044cc;
-    transition: all 0.4s;
-}
-
-.membro-card:hover .avatar-placeholder {
-    border-color: #0066ff;
-    box-shadow: 0 0 40px rgba(0, 68, 204, 0.4);
-    transform: scale(1.05);
-}
-
 .membro-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+    font-size: 1rem;
+    margin-bottom: 3px;
     color: #fff;
     position: relative;
     z-index: 1;
@@ -579,7 +574,7 @@ body {
 
 .membro-card p {
     color: #66aaff;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     position: relative;
     z-index: 1;
 }
@@ -672,7 +667,7 @@ body {
 
 .cargo-grid {
     display: none;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
     animation: fadeInGrid 0.5s ease;
 }
@@ -760,18 +755,14 @@ body {
     flex-shrink: 0;
 }
 
-.membro-mes-foto .avatar-placeholder {
+.membro-mes-foto img.skin-3d {
     width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ffd700, #ff6b00);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    color: #fff;
-    border: 5px solid #ffd700;
-    box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+    height: auto;
+    display: block;
+    image-rendering: auto;
+    border-radius: 0;
+    border: none;
+    background: transparent;
 }
 
 .membro-mes-destaque {
@@ -846,105 +837,6 @@ body {
 
 .membro-mes-stats span i {
     color: #0044cc;
-}
-
-/* ===== TIERS ===== */
-.tiers-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.tier-categoria h3 {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-    color: #0066ff;
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 3px;
-    text-shadow: 0 0 30px rgba(0, 68, 204, 0.3);
-}
-
-.tiers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 25px;
-}
-
-.tier-card {
-    text-align: center;
-    background: rgba(0, 68, 204, 0.05);
-    padding: 20px;
-    border-radius: 15px;
-    border: 2px solid rgba(0, 68, 204, 0.3);
-    transition: all 0.4s;
-    opacity: 0;
-    transform: translateY(30px);
-    position: relative;
-    overflow: hidden;
-}
-
-.tier-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #0044cc, #0066ff, #0044cc, transparent);
-    transform: scaleX(0);
-    transition: transform 0.4s;
-}
-
-.tier-card:hover::after {
-    transform: scaleX(1);
-}
-
-.tier-card:hover {
-    transform: scale(1.08) rotate(-2deg);
-    border-color: #0044cc;
-    box-shadow: 0 10px 40px rgba(0, 68, 204, 0.3);
-    background: rgba(0, 68, 204, 0.1);
-}
-
-.tier-card .tier-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 0 auto 10px;
-    background: linear-gradient(135deg, #0044cc, #0066ff);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: #fff;
-    transition: all 0.4s;
-}
-
-.tier-card:hover .tier-icon {
-    animation: spin 4s linear infinite;
-    box-shadow: 0 0 40px rgba(0, 68, 204, 0.5);
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.tier-card .tier-nome {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
-    font-family: 'Orbitron', sans-serif;
-}
-
-.tier-card .tier-desc {
-    font-size: 0.9rem;
-    color: #66aaff;
 }
 
 /* ===== CONQUISTAS ===== */
@@ -1494,10 +1386,6 @@ footer {
         font-size: 2rem;
     }
 
-    .membros-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-
     .membros-header {
         flex-direction: column;
         align-items: stretch;
@@ -1513,12 +1401,8 @@ footer {
     }
 
     .cargo-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
         gap: 15px;
-    }
-
-    .tiers-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 
     .midias-grid {
@@ -1532,6 +1416,10 @@ footer {
 
     .membro-mes-stats {
         justify-content: center;
+    }
+
+    .membro-mes-foto img.skin-3d {
+        width: 120px;
     }
 }
 
@@ -1550,13 +1438,11 @@ footer {
     }
 
     .membro-card {
-        padding: 15px;
+        padding: 12px 10px;
     }
 
-    .membro-card .avatar-placeholder {
-        width: 80px;
-        height: 80px;
-        font-size: 2rem;
+    .membro-card img.skin-3d {
+        max-width: 80px;
     }
 
     .membros-filtros {
@@ -1574,27 +1460,8 @@ footer {
     }
 
     .cargo-grid {
-        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         gap: 10px;
-    }
-
-    .tiers-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .tier-card {
-        padding: 12px;
-    }
-
-    .tier-card .tier-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-    }
-
-    .tier-card .tier-nome {
-        font-size: 1rem;
     }
 
     .conquistas-lista li {
@@ -1615,10 +1482,8 @@ footer {
         font-size: 0.85rem;
     }
 
-    .membro-mes-foto .avatar-placeholder {
+    .membro-mes-foto img.skin-3d {
         width: 100px;
-        height: 100px;
-        font-size: 2.5rem;
     }
 
     .membro-mes-info h3 {
