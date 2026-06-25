@@ -22,109 +22,124 @@ const siteData = {
     imagemSobre: "imagens/cla.png"
   },
 
-  // ---------- FUNDADORES (SKIN 3D EM PÉ - VISAGE) ----------
+  // ---------- FUNDADORES (SKIN ORIGINAL) ----------
   fundadores: {
     titulo: "Fundadores",
     lista: [
       { nome: "zCrystalHex", cargo: "Fundador", foto: "https://visage.surgeplay.com/full/256/zCrystalHex" },
-      { nome: "ZGodPowerX", cargo: "Owner", foto: "https://visage.surgeplay.com/full/256/mopomo350" },
+      { nome: "ZGodPowerX", cargo: "Owner", foto: "https://visage.surgeplay.com/full/256/ZGodPowerX" },
       { nome: "Asmodeus", cargo: "Lider", foto: "https://visage.surgeplay.com/full/256/Asmodeus" }
     ]
   },
 
-  // ---------- MEMBROS ATUAIS (SKIN 3D EM PÉ - VISAGE) ----------
+  // ---------- MEMBROS ATUAIS ----------
   membrosAtuais: {
     titulo: "Membros",
+    
     // ---- ALTA ELITE ----
     altaElite: [
+      // Com skin original
       { nome: "Elite_Evow", cargo: "Leader", foto: "https://visage.surgeplay.com/full/128/Elite_Evow" },
       { nome: "Lootier", cargo: "Leader", foto: "https://visage.surgeplay.com/full/128/Lootier" },
-      { nome: "Baraaus", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
-      { nome: "Inject7", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "AkyraZ", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/AkyraZ" },
       { nome: "EuCoringando_", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/EuCoringando_" },
-      { nome: "papo_de_passafome", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "Sozyeon", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/Sozyeon" },
       { nome: "selfisdemons", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/selfisdemons" },
       { nome: "EoIcebbXz", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/EoIcebbXz" },
-      { nome: "Sementinha", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "VxKaua", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/VxKaua" },
+      
+      // Sem skin (mopomo350) - últimos
+      { nome: "Baraaus", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Inject7", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "papo_de_passafome", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Sementinha", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "SanioMT", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "Marconigamer13", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
     ],
+    
     // ---- ELITE ----
     elite: [
-      { nome: "JuliaFlyffy", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/JuliaFlyffy" },
+      // Com skin original
       { nome: "Zakai_", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Zakai_" },
       { nome: "Itachi_Uchiha", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Itachi_Uchiha" },
       { nome: "The_Ghost", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/The_Ghost" },
-      { nome: "snoopaoPJL", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/snoopaoPJL" },
       { nome: "GCplays_nn", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/GCplays_nn" },
       { nome: "whitemask", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/whitemask" },
       { nome: "piGabriel", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/piGabriel" },
-      { nome: "El_Milobrzx", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/El_Milobrzx" },
       { nome: "edu2253", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/edu2253" },
-      { nome: "Cachorro_Caramel", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Cachorro_Caramel" },
       { nome: "Zuru", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Zuru" },
-      { nome: "Nexxiltyy", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Nexxiltyy" },
       { nome: "Senhor_Fornalha", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Senhor_Fornalha" },
       { nome: "Vexpelion", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Vexpelion" },
-      { nome: "Usuaria9036", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Usuaria9036" },
-      { nome: "zyxkill", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/zyxkill" }
+      { nome: "zyxkill", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/zyxkill" },
+      
+      // Sem skin (mopomo350) - últimos
+      { nome: "JuliaFlyffy", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "snoopaoPJL", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "El_Milobrzx", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Cachorro_Caramel", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Nexxiltyy", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Usuaria9036", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
     ],
+    
     // ---- MEMBRO ----
     membro: [
+      // Com skin original
       { nome: "perrinho2011", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/perrinho2011" },
       { nome: "Kishino", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Kishino" },
       { nome: "AllefMT", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/AllefMT" },
-      { nome: "L7ZXWK", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/L7ZXWK" },
-      { nome: "TiaAmora", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/TiaAmora" },
-      { nome: "gabrielgg24187", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/gabrielgg24187" },
-      { nome: "Igorrpl", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Igorrpl" },
-      { nome: "LozinBW12", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/LozinBW12" },
       { nome: "Bolsonaro_22", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Bolsonaro_22" },
-      { nome: "b10pietro", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/b10pietro" },
-      { nome: "Abusandinho", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Abusandinho" },
-      { nome: ".Uchina", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/.Uchina" },
-      { nome: ".Silvrex01", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/.Silvrex01" },
-      { nome: "Itctrem", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Itctrem" },
-      { nome: "GodLipe7272", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/GodLipe7272" },
-      { nome: "GalaticosPlay1K", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/GalaticosPlay1K" },
-      { nome: "Dol7hin", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Dol7hin" },
-      { nome: "DiegoBaam", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/DiegoBaam" },
-      { nome: "Lowfigth", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Lowfigth" },
-      { nome: "Loosla", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Loosla" },
       { nome: "KAISER_26", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/KAISER_26" },
-      { nome: "jeguemakechina", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/jeguemakechina" },
-      { nome: "JasonMorumbi", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/JasonMorumbi" },
       { nome: "Polar_gg", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Polar_gg" },
       { nome: "Phzin_yt", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Phzin_yt" },
       { nome: "Pensamentox", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Pensamentox" },
       { nome: "Sunyzinho", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Sunyzinho" },
       { nome: "naoseibobar", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/naoseibobar" },
       { nome: "Miguelboy008", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Miguelboy008" },
-      { nome: "Sou_Home", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Sou_Home" },
       { nome: "SnowpyOF", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/SnowpyOF" },
       { nome: "Roxinho", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Roxinho" },
-      { nome: "Radis_yt", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Radis_yt" },
-      { nome: "Zero15337", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Zero15337" },
       { nome: "zaza666", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/zaza666" },
       { nome: "Ywkuut", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Ywkuut" },
-      { nome: "ydemonblatant__", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/ydemonblatant__" },
-      { nome: "Vynzxx", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Vynzxx" },
-      { nome: "Lirioarthur37", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Lirioarthur37" },
-      { nome: "zFel1pe", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/zFel1pe" },
       { nome: "Weembu", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Weembu" },
-      { nome: "kgzwPANTERA", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/kgzwPANTERA" }
+      { nome: "kgzwPANTERA", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/kgzwPANTERA" },
+      
+      // Sem skin (mopomo350) - últimos
+      { nome: "L7ZXWK", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "TiaAmora", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "gabrielgg24187", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Igorrpl", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "b10pietro", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Abusandinho", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: ".Uchina", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: ".Silvrex01", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Itctrem", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "GodLipe7272", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "GalaticosPlay1K", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Dol7hin", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "DiegoBaam", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Lowfigth", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Loosla", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "jeguemakechina", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "JasonMorumbi", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Sou_Home", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Radis_yt", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Zero15337", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "ydemonblatant__", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Vynzxx", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Lirioarthur37", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "zFel1pe", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
     ],
+    
     // ---- TESTER ----
     tester: [
-      { nome: "EusouBonito", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/EusouBonito" },
+      // Com skin original
       { nome: "Bayo", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/Bayo" },
-      { nome: "Tobiaspug000", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/Tobiaspug000" },
       { nome: "Soul_Hunter13", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/Soul_Hunter13" },
-      { nome: "maja0102", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/maja0102" },
-      { nome: ".Lucan4441445", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/.Lucan4441445" }
+      
+      // Sem skin (mopomo350) - últimos
+      { nome: "EusouBonito", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Tobiaspug000", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "maja0102", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: ".Lucan4441445", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
     ]
   },
 
