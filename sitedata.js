@@ -13,16 +13,16 @@ const siteData = {
   // ---------- ANÚNCIOS (CAROUSEL) ----------
   anuncios: {
     titulo: "Anúncios",
-    subtitulo: "Fique por dentro das novidades da ZYN ON TOP",
+    subtitulo: "Fique por dentro das novidades da ZYN",
     slides: [
       {
         titulo: "🚀 Nova Era!",
-        descricao: "A ZYN ON TOP está de cara nova! Site reformulado e pronto para dominar!",
+        descricao: "A ZYN ON TOP está de cara nova e pronta para dominar!",
         cor: "#0044cc"
       },
       {
         titulo: "⚔️ Guerras Épicas!",
-        descricao: "Estamos nos preparando para a próxima LIGA DE CLÃS. Treinem muito!",
+        descricao: "Estamos nos preparando para a próxima LIGA DE CLÃS. Vamos lá!",
         cor: "#0066ff"
       },
       {
@@ -31,8 +31,8 @@ const siteData = {
         cor: "#3399ff"
       },
       {
-        titulo: "🏆 Conquistas!",
-        descricao: "Já somos o clã com mais vitórias no servidor! Continuamos firmes!",
+        titulo: "🏆 Foco total!",
+        descricao: "Foco e dedicação sempre ! Sem atalhos",
         cor: "#ffd700"
       }
     ]
@@ -55,7 +55,7 @@ const siteData = {
     titulo: "Fundadores",
     lista: [
       { nome: "zCrystalHex", cargo: "Fundador", foto: "https://visage.surgeplay.com/full/256/zCrystalHex" },
-      { nome: "ZGodPowerX", cargo: "Owner", foto: "https://visage.surgeplay.com/full/256/ZGodPowerX" },
+      { nome: "ZGodPowerX", cargo: "Owner", foto: "https://visage.surgeplay.com/full/256/mopomo350" },
       { nome: "Asmodeus", cargo: "Lider", foto: "https://visage.surgeplay.com/full/256/Asmodeus" }
     ]
   },
