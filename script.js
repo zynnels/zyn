@@ -31,6 +31,74 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     createParticles();
 
+    // ============================================================
+    //  CAROUSEL DE ANÚNCIOS
+    // ============================================================
+    
+    let currentSlide = 0;
+    const slidesContainer = document.getElementById('carouselSlides');
+    const dotsContainer = document.getElementById('carouselDots');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+
+    if (slidesContainer && siteData.anuncios) {
+        const slides = siteData.anuncios.slides;
+        
+        // Criar slides
+        slidesContainer.innerHTML = slides.map((slide, index) => `
+            <div class="carousel-slide" style="background: linear-gradient(135deg, ${slide.cor}, #001133);">
+                <div class="carousel-content">
+                    <h3>${slide.titulo}</h3>
+                    <p>${slide.descricao}</p>
+                </div>
+            </div>
+        `).join('');
+
+        // Criar dots
+        dotsContainer.innerHTML = slides.map((_, index) => `
+            <span class="dot ${index === 0 ? 'active' : ''}" data-index="${index}"></span>
+        `).join('');
+
+        // Função para ir para o slide
+        function goToSlide(index) {
+            const totalSlides = slides.length;
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            currentSlide = index;
+            slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Atualizar dots
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        // Eventos dos dots
+        document.querySelectorAll('.dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                goToSlide(parseInt(this.dataset.index));
+            });
+        });
+
+        // Eventos dos botões
+        if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+        if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+        // Auto-play a cada 5 segundos
+        let autoPlay = setInterval(() => goToSlide(currentSlide + 1), 5000);
+
+        // Pausar auto-play no hover
+        const carousel = document.querySelector('.carousel-container');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => clearInterval(autoPlay));
+            carousel.addEventListener('mouseleave', () => {
+                autoPlay = setInterval(() => goToSlide(currentSlide + 1), 5000);
+            });
+        }
+
+        console.log('✅ Carousel carregado com', slides.length, 'slides');
+    }
+
     // ===== SOBRE =====
     const sobreImg = document.getElementById('sobreImg');
     if (sobreImg && siteData.sobre) {
@@ -229,112 +297,44 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('✅ Galeria carregada:', siteData.galeria.imagens.length);
     }
 
+    // ============================================================
+    //  DISCORD WIDGET (Simulação de estatísticas)
+    // ============================================================
+    
+    // Simula estatísticas do Discord (você pode substituir por uma API real)
+    function updateDiscordStats() {
+        const memberCount = document.getElementById('discordMembers');
+        const onlineCount = document.getElementById('discordOnline');
+        const messageCount = document.getElementById('discordMessages');
+
+        if (memberCount) {
+            // Simula um número aleatório entre 50 e 150
+            const members = Math.floor(Math.random() * 100) + 50;
+            memberCount.textContent = members;
+        }
+
+        if (onlineCount) {
+            // Simula um número aleatório entre 10 e 50
+            const online = Math.floor(Math.random() * 40) + 10;
+            onlineCount.textContent = online;
+        }
+
+        if (messageCount) {
+            // Simula um número aleatório entre 100 e 500
+            const messages = Math.floor(Math.random() * 400) + 100;
+            messageCount.textContent = messages;
+        }
+    }
+
+    // Atualizar a cada 30 segundos
+    updateDiscordStats();
+    setInterval(updateDiscordStats, 30000);
+
     // ===== ONLINE COUNT =====
     const onlineCount = document.querySelector('.online-count');
     if (onlineCount && siteData.contato) {
         onlineCount.textContent = siteData.contato.onlineCount || 0;
     }
-
-    // ============================================================
-    //  CHAT EM TEMPO REAL (COM LOCAL STORAGE - SEM BACKEND)
-    // ============================================================
-    
-    const chatMessages = document.getElementById('chatMessages');
-    const chatInput = document.getElementById('chatInput');
-    const chatSendBtn = document.getElementById('chatSendBtn');
-
-    // Palavras bloqueadas
-    const palavrasBloqueadas = [
-        'puta', 'caralho', 'merda', 'buceta', 'cu', 'foda', 'fdp', 'filho da puta',
-        'viado', 'bixa', 'otario', 'otária', 'idiota', 'burro', 'burra'
-    ];
-
-    function filtrarMensagem(texto) {
-        let textoFiltrado = texto;
-        palavrasBloqueadas.forEach(palavra => {
-            const regex = new RegExp(palavra, 'gi');
-            textoFiltrado = textoFiltrado.replace(regex, '****');
-        });
-        return textoFiltrado;
-    }
-
-    function carregarMensagens() {
-        const mensagens = JSON.parse(localStorage.getItem('chatZynMessages') || '[]');
-        chatMessages.innerHTML = '';
-        if (mensagens.length === 0) {
-            chatMessages.innerHTML = `
-                <div class="chat-empty">
-                    <i class="fas fa-comment-dots"></i>
-                    <p>Nenhuma mensagem ainda. Seja o primeiro a falar!</p>
-                </div>
-            `;
-            return;
-        }
-        mensagens.forEach(msg => {
-            const div = document.createElement('div');
-            div.className = 'chat-message';
-            const data = new Date(msg.timestamp);
-            const hora = data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-            div.innerHTML = `
-                <span class="chat-hora">${hora}</span>
-                <span class="chat-nome">${msg.nome}:</span>
-                <span class="chat-texto">${msg.texto}</span>
-            `;
-            chatMessages.appendChild(div);
-        });
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function enviarMensagem() {
-        const texto = chatInput.value.trim();
-        if (texto === '') return;
-
-        // Comando /clear (Admin)
-        if (texto.toLowerCase() === '/clear') {
-            localStorage.removeItem('chatZynMessages');
-            carregarMensagens();
-            chatInput.value = '';
-            chatInput.placeholder = 'Chat limpo por um Admin!';
-            setTimeout(() => {
-                chatInput.placeholder = 'Digite sua mensagem...';
-            }, 3000);
-            return;
-        }
-
-        const nome = 'ZYN_MEMBER';
-        const mensagemFiltrada = filtrarMensagem(texto);
-        const mensagens = JSON.parse(localStorage.getItem('chatZynMessages') || '[]');
-        mensagens.push({
-            nome: nome,
-            texto: mensagemFiltrada,
-            timestamp: Date.now()
-        });
-        localStorage.setItem('chatZynMessages', JSON.stringify(mensagens));
-        carregarMensagens();
-        chatInput.value = '';
-    }
-
-    // Carregar mensagens ao iniciar
-    carregarMensagens();
-
-    // Enviar com botão
-    if (chatSendBtn) {
-        chatSendBtn.addEventListener('click', enviarMensagem);
-    }
-
-    // Enviar com Enter
-    if (chatInput) {
-        chatInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                enviarMensagem();
-            }
-        });
-    }
-
-    // Atualizar chat a cada 5 segundos (para múltiplas abas)
-    setInterval(carregarMensagens, 5000);
-
-    console.log('✅ Chat carregado com sucesso!');
 
     // ============================================================
     //  ANIMAÇÕES E EFEITOS
