@@ -223,15 +223,15 @@ const siteData = {
   discord: {
     titulo: "Discord da ZYN",
     subtitulo: "Conecte-se com a comunidade!",
-    serverId: "1461110454071066707", // ← Coloque o ID do seu servidor aqui
-    invite: "https://discord.gg/HBJwrKzecn"
+    serverId: "1461110454071066707", 
+    invite: "https://discord.gg/hWz7HAsuqS"
   },
 
   // ---------- REDES SOCIAIS / CONTATO ----------
   contato: {
     titulo: "Quer entrar na ZYN?",
     texto: "Venha ser membro da ZYN ON TOP!",
-    discord: "https://discord.gg/HBJwrKzecn",
+    discord: "https://discord.gg/hWz7HAsuqS",
     instagram: "https://instagram.com/thezynelsoficial",
     email: "zynontop@gmail.com",
     onlineCount: 93
