@@ -22,15 +22,13 @@ const siteData = {
     imagemSobre: "imagens/cla.png"
   },
 
-  // ---------- FUNDADORES (COM SKIN CORPO INTEIRO) ----------
+  // ---------- FUNDADORES (3 ORIGINAIS COM SKIN) ----------
   fundadores: {
     titulo: "Fundadores",
     lista: [
-      { nome: "Saulofuzi", cargo: "Fundador", foto: "https://minotar.net/body/Saulofuzi/200" },
-      { nome: "Suzly", cargo: "Lider", foto: "https://minotar.net/body/Suzly/200" },
-      { nome: "uCarlsoXz_", cargo: "Sub Lider", foto: "https://minotar.net/body/uCarlsoXz_/200" },
-      { nome: "uJosca", cargo: "Gerente", foto: "https://minotar.net/body/uJosca/200" },
-      { nome: "Black_KiritoXz", cargo: "Mobile kkk", foto: "https://minotar.net/body/Black_KiritoXz/200" }
+      { nome: "zCrystalHex", cargo: "Fundador", foto: "https://minotar.net/body/zCrystalHex/200" },
+      { nome: "ZGodPowerX", cargo: "Owner", foto: "https://minotar.net/body/ZGodPowerX/200" },
+      { nome: "Asmodeus", cargo: "Lider", foto: "https://minotar.net/body/Asmodeus/200" }
     ]
   },
 
