@@ -7,7 +7,7 @@ const siteData = {
   cabecalho: {
     titulo: "ZYN ON TOP",
     subtitulo: "Uma nova era",
-    imagemHeroi: "imagens/hero.jpg"
+    imagemHeroi: "imagens/hero.jpg"  // ← MUDE AQUI SE FOR .PNG
   },
 
   // ---------- SOBRE O CLÃ ----------
@@ -19,10 +19,10 @@ const siteData = {
       "Uma clan em crescimento procurando pessoas para recrutar !."
     ],
     tags: ["⚔️ PvP", "🎮 Minecraft", "🤝 Amizade", "🚀 Evolução"],
-    imagemSobre: "imagens/cla.png"
+    imagemSobre: "imagens/cla.png"  // ← MUDE AQUI SE FOR .JPG
   },
 
-  // ---------- FUNDADORES (SKIN ORIGINAL) ----------
+  // ---------- FUNDADORES ----------
   fundadores: {
     titulo: "Fundadores",
     lista: [
@@ -48,7 +48,7 @@ const siteData = {
       { nome: "EoIcebbXz", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/EoIcebbXz" },
       { nome: "VxKaua", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/VxKaua" },
       
-      // Sem skin (mopomo350) - últimos
+      // Sem skin (mopomo350)
       { nome: "Baraaus", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "Inject7", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "papo_de_passafome", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
@@ -72,7 +72,7 @@ const siteData = {
       { nome: "Vexpelion", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/Vexpelion" },
       { nome: "zyxkill", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/zyxkill" },
       
-      // Sem skin (mopomo350) - últimos
+      // Sem skin (mopomo350)
       { nome: "JuliaFlyffy", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "snoopaoPJL", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "El_Milobrzx", cargo: "Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
@@ -102,7 +102,7 @@ const siteData = {
       { nome: "Weembu", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/Weembu" },
       { nome: "kgzwPANTERA", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/kgzwPANTERA" },
       
-      // Sem skin (mopomo350) - últimos
+      // Sem skin (mopomo350)
       { nome: "L7ZXWK", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "TiaAmora", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "gabrielgg24187", cargo: "Membro", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
@@ -135,7 +135,7 @@ const siteData = {
       { nome: "Bayo", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/Bayo" },
       { nome: "Soul_Hunter13", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/Soul_Hunter13" },
       
-      // Sem skin (mopomo350) - últimos
+      // Sem skin (mopomo350)
       { nome: "EusouBonito", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "Tobiaspug000", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "maja0102", cargo: "Tester", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
