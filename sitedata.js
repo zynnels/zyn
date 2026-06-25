@@ -27,7 +27,7 @@ const siteData = {
     titulo: "Fundadores",
     lista: [
       { nome: "zCrystalHex", cargo: "Fundador", foto: "https://visage.surgeplay.com/full/256/zCrystalHex" },
-      { nome: "ZGodPowerX", cargo: "Owner", foto: "https://visage.surgeplay.com/full/256/ZGodPowerX" },
+      { nome: "ZGodPowerX", cargo: "Owner", foto: "https://visage.surgeplay.com/full/256/mopomo350" },
       { nome: "Asmodeus", cargo: "Lider", foto: "https://visage.surgeplay.com/full/256/Asmodeus" }
     ]
   },
@@ -39,18 +39,18 @@ const siteData = {
     altaElite: [
       { nome: "Elite_Evow", cargo: "Leader", foto: "https://visage.surgeplay.com/full/128/Elite_Evow" },
       { nome: "Lootier", cargo: "Leader", foto: "https://visage.surgeplay.com/full/128/Lootier" },
-      { nome: "Baraaus", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/Baraaus" },
-      { nome: "Inject7", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/Inject7" },
+      { nome: "Baraaus", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Inject7", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "AkyraZ", cargo: "Sub Leader", foto: "https://visage.surgeplay.com/full/128/AkyraZ" },
       { nome: "EuCoringando_", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/EuCoringando_" },
-      { nome: "papo_de_passafome", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/papo_de_passafome" },
+      { nome: "papo_de_passafome", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "Sozyeon", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/Sozyeon" },
       { nome: "selfisdemons", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/selfisdemons" },
       { nome: "EoIcebbXz", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/EoIcebbXz" },
-      { nome: "Sementinha", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/Sementinha" },
+      { nome: "Sementinha", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
       { nome: "VxKaua", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/VxKaua" },
-      { nome: "SanioMT", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/SanioMT" },
-      { nome: "Marconigamer13", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/Marconigamer13" }
+      { nome: "SanioMT", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" },
+      { nome: "Marconigamer13", cargo: "Alta Elite", foto: "https://visage.surgeplay.com/full/128/mopomo350" }
     ],
     // ---- ELITE ----
     elite: [
