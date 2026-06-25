@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (slidesContainer && siteData.anuncios) {
         const slides = siteData.anuncios.slides;
         
-        // Criar slides
         slidesContainer.innerHTML = slides.map((slide, index) => `
             <div class="carousel-slide" style="background: linear-gradient(135deg, ${slide.cor}, #001133);">
                 <div class="carousel-content">
@@ -54,12 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `).join('');
 
-        // Criar dots
         dotsContainer.innerHTML = slides.map((_, index) => `
             <span class="dot ${index === 0 ? 'active' : ''}" data-index="${index}"></span>
         `).join('');
 
-        // Função para ir para o slide
         function goToSlide(index) {
             const totalSlides = slides.length;
             if (index < 0) index = totalSlides - 1;
@@ -67,27 +64,22 @@ document.addEventListener('DOMContentLoaded', function() {
             currentSlide = index;
             slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
             
-            // Atualizar dots
             document.querySelectorAll('.dot').forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentSlide);
             });
         }
 
-        // Eventos dos dots
         document.querySelectorAll('.dot').forEach(dot => {
             dot.addEventListener('click', function() {
                 goToSlide(parseInt(this.dataset.index));
             });
         });
 
-        // Eventos dos botões
         if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
         if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
 
-        // Auto-play a cada 5 segundos
         let autoPlay = setInterval(() => goToSlide(currentSlide + 1), 5000);
 
-        // Pausar auto-play no hover
         const carousel = document.querySelector('.carousel-container');
         if (carousel) {
             carousel.addEventListener('mouseenter', () => clearInterval(autoPlay));
@@ -296,18 +288,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }).join('');
         console.log('✅ Galeria carregada:', siteData.galeria.imagens.length);
     }
-
-    // Buscar estatísticas ao carregar e a cada 60 segundos
-    fetchDiscordStats();
-    setInterval(fetchDiscordStats, 60000);
-
-    // Mensagens simuladas (opcional)
-    const messageCount = document.getElementById('discordMessages');
-    if (messageCount) {
-        messageCount.textContent = Math.floor(Math.random() * 400) + 100;
-    }
-
-    console.log('✅ Discord integrado com sucesso!');
 
     // ===== ONLINE COUNT =====
     const onlineCount = document.querySelector('.online-count');
