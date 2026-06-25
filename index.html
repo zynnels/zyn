@@ -16,7 +16,7 @@
             <h1>ZYN ON TOP</h1>
             <div class="destaque">⚡ ZYN ⚡</div>
             <p>Uma nova era começa agora</p>
-            <a href="#contato" class="btn"><i class="fas fa-rocket"></i> Entre no Clã</a>
+            <a href="#discord" class="btn"><i class="fab fa-discord"></i> Entre no Discord</a>
             <div class="hero-stats">
                 <div class="stat"><span class="num" data-target="50">0</span><span class="label">Guerras</span></div>
                 <div class="stat"><span class="num" data-target="79">0</span><span class="label">Membros</span></div>
@@ -30,8 +30,24 @@
         <div class="particles" id="particles"></div>
     </header>
 
+    <!-- ===== ANÚNCIOS / CAROUSEL ===== -->
+    <section id="anuncios" class="section bg-dark">
+        <div class="container">
+            <h2><i class="fas fa-bullhorn"></i> Anúncios</h2>
+            <p class="subtitulo">Fique por dentro das novidades da ZYN ON TOP</p>
+            <div class="carousel-container">
+                <div class="carousel-slides" id="carouselSlides">
+                    <!-- Gerado pelo JavaScript -->
+                </div>
+                <div class="carousel-dots" id="carouselDots"></div>
+                <button class="carousel-btn prev" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== SOBRE ===== -->
-    <section id="sobre" class="section bg-dark">
+    <section id="sobre" class="section bg-light">
         <div class="container">
             <h2><i class="fas fa-users"></i> Quem somos?</h2>
             <p class="subtitulo">Conheça a história da ZYN ON TOP</p>
@@ -56,7 +72,7 @@
     </section>
 
     <!-- ===== FUNDADORES ===== -->
-    <section id="fundadores" class="section bg-light">
+    <section id="fundadores" class="section bg-dark">
         <div class="container">
             <h2><i class="fas fa-crown"></i> Fundadores</h2>
             <p class="subtitulo">Os criadores da ZYN ON TOP</p>
@@ -65,7 +81,7 @@
     </section>
 
     <!-- ===== MEMBROS ===== -->
-    <section id="membros" class="section bg-dark">
+    <section id="membros" class="section bg-light">
         <div class="container">
             <h2><i class="fas fa-user-group"></i> Membros</h2>
             <p class="subtitulo">Nossa equipe atual</p>
@@ -74,7 +90,7 @@
     </section>
 
     <!-- ===== MEMBRO DO MÊS ===== -->
-    <section id="membro-mes" class="section bg-light">
+    <section id="membro-mes" class="section bg-dark">
         <div class="container">
             <h2><i class="fas fa-star"></i> Player do Mês</h2>
             <p class="subtitulo">O membro mais foda do mês!</p>
@@ -83,11 +99,20 @@
     </section>
 
     <!-- ===== CONQUISTAS ===== -->
-    <section id="conquistas" class="section bg-dark">
+    <section id="conquistas" class="section bg-light">
         <div class="container">
             <h2><i class="fas fa-trophy"></i> Conquistas</h2>
             <p class="subtitulo">Nossas vitórias</p>
             <ul class="conquistas-lista" id="conquistas-lista"></ul>
+        </div>
+    </section>
+
+    <!-- ===== SERVIDORES ===== -->
+    <section id="servidores" class="section bg-dark">
+        <div class="container">
+            <h2><i class="fas fa-server"></i> Servidores que jogamos</h2>
+            <p class="subtitulo">Onde a ZYN ON TOP está presente</p>
+            <div class="servidores-grid" id="servidores-grid"></div>
         </div>
     </section>
 
@@ -100,42 +125,46 @@
         </div>
     </section>
 
-    <!-- ===== SERVIDORES QUE JOGAMOS ===== -->
-    <section id="servidores" class="section bg-dark">
+    <!-- ===== DISCORD WIDGET ===== -->
+    <section id="discord" class="section bg-dark">
         <div class="container">
-            <h2><i class="fas fa-server"></i> Servidores que jogamos</h2>
-            <p class="subtitulo">Onde a ZYN ON TOP está presente</p>
-            <div class="servidores-grid" id="servidores-grid">
-                <!-- Gerado pelo JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CHAT ===== -->
-    <section id="chat" class="section bg-light">
-        <div class="container">
-            <h2><i class="fas fa-comments"></i> Chat da ZYN</h2>
-            <p class="subtitulo">Converse com outros membros!</p>
-            <div class="chat-container">
-                <div class="chat-messages" id="chatMessages">
-                    <div class="chat-empty">
-                        <i class="fas fa-comment-dots"></i>
-                        <p>Nenhuma mensagem ainda. Seja o primeiro a falar!</p>
+            <h2><i class="fab fa-discord"></i> Discord da ZYN</h2>
+            <p class="subtitulo">Conecte-se com a comunidade!</p>
+            <div class="discord-container">
+                <div class="discord-stats">
+                    <div class="discord-stat">
+                        <i class="fas fa-users"></i>
+                        <span class="discord-count" id="discordMembers">--</span>
+                        <span class="discord-label">Membros</span>
+                    </div>
+                    <div class="discord-stat">
+                        <i class="fas fa-circle" style="color: #00ff00;"></i>
+                        <span class="discord-count" id="discordOnline">--</span>
+                        <span class="discord-label">Online</span>
+                    </div>
+                    <div class="discord-stat">
+                        <i class="fas fa-comment"></i>
+                        <span class="discord-count" id="discordMessages">--</span>
+                        <span class="discord-label">Mensagens</span>
                     </div>
                 </div>
-                <div class="chat-input-area">
-                    <input type="text" id="chatInput" placeholder="Digite sua mensagem..." maxlength="200">
-                    <button id="chatSendBtn"><i class="fas fa-paper-plane"></i> Enviar</button>
+                <div class="discord-widget">
+                    <iframe src="https://discord.com/widget?id=SEU_SERVIDOR_ID&theme=dark" 
+                            width="100%" height="500" allowtransparency="true" frameborder="0" 
+                            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+                    </iframe>
                 </div>
-                <div class="chat-commands">
-                    <span><i class="fas fa-info-circle"></i> Digite <strong>/clear</strong> para limpar o chat (Admin)</span>
+                <div class="discord-actions">
+                    <a href="https://discord.gg/hWz7HAsuqS" target="_blank" class="btn discord-btn">
+                        <i class="fab fa-discord"></i> Entrar no Discord
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== CONTATO ===== -->
-    <section id="contato" class="section bg-dark">
+    <section id="contato" class="section bg-light">
         <div class="container">
             <h2><i class="fas fa-envelope"></i> Quer entrar na ZYN?</h2>
             <p class="subtitulo">Venha fazer parte da nossa família</p>
@@ -179,7 +208,7 @@
                     <a href="#sobre"><i class="fas fa-info-circle"></i> Sobre</a>
                     <a href="#membros"><i class="fas fa-users"></i> Membros</a>
                     <a href="#servidores"><i class="fas fa-server"></i> Servidores</a>
-                    <a href="#chat"><i class="fas fa-comments"></i> Chat</a>
+                    <a href="#discord"><i class="fab fa-discord"></i> Discord</a>
                     <a href="#contato"><i class="fas fa-envelope"></i> Contato</a>
                 </div>
                 <div class="footer-social">
