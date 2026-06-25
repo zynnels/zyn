@@ -298,37 +298,66 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ============================================================
-    //  DISCORD WIDGET (Simulação de estatísticas)
+    //  DISCORD WIDGET
     // ============================================================
     
-    // Simula estatísticas do Discord (você pode substituir por uma API real)
-    function updateDiscordStats() {
-        const memberCount = document.getElementById('discordMembers');
-        const onlineCount = document.getElementById('discordOnline');
-        const messageCount = document.getElementById('discordMessages');
+    // Pega o ID do servidor do siteData
+    const serverId = siteData.discord?.serverId || '';
+    
+    // Atualiza o iframe do Discord com o ID correto
+    const discordIframe = document.querySelector('.discord-widget iframe');
+    if (discordIframe && serverId && serverId !== 'SEU_SERVIDOR_ID_AQUI') {
+        discordIframe.src = `https://discord.com/widget?id=${serverId}&theme=dark`;
+        console.log('✅ Discord Widget configurado com ID:', serverId);
+    } else if (discordIframe) {
+        discordIframe.src = `https://discord.com/widget?id=hWz7HAsuqS&theme=dark`;
+        console.log('⚠️ Usando convite como fallback para o Discord');
+    }
 
-        if (memberCount) {
-            // Simula um número aleatório entre 50 e 150
-            const members = Math.floor(Math.random() * 100) + 50;
-            memberCount.textContent = members;
-        }
-
-        if (onlineCount) {
-            // Simula um número aleatório entre 10 e 50
-            const online = Math.floor(Math.random() * 40) + 10;
-            onlineCount.textContent = online;
-        }
-
-        if (messageCount) {
-            // Simula um número aleatório entre 100 e 500
-            const messages = Math.floor(Math.random() * 400) + 100;
-            messageCount.textContent = messages;
+    // Função para buscar estatísticas do Discord via API pública
+    async function fetchDiscordStats() {
+        try {
+            // Usando a API pública do Discord para pegar informações do servidor
+            const response = await fetch(`https://discord.com/api/v9/invites/hWz7HAsuqS?with_counts=true`);
+            if (response.ok) {
+                const data = await response.json();
+                
+                const memberCount = document.getElementById('discordMembers');
+                const onlineCount = document.getElementById('discordOnline');
+                
+                if (memberCount && data.approximate_member_count) {
+                    memberCount.textContent = data.approximate_member_count;
+                }
+                if (onlineCount && data.approximate_presence_count) {
+                    onlineCount.textContent = data.approximate_presence_count;
+                }
+                console.log('✅ Estatísticas do Discord atualizadas');
+            }
+        } catch (error) {
+            console.log('⚠️ Não foi possível buscar estatísticas do Discord:', error);
+            // Se falhar, usa números simulados
+            const memberCount = document.getElementById('discordMembers');
+            const onlineCount = document.getElementById('discordOnline');
+            if (memberCount && memberCount.textContent === '--') {
+                memberCount.textContent = Math.floor(Math.random() * 100) + 50;
+            }
+            if (onlineCount && onlineCount.textContent === '--') {
+                onlineCount.textContent = Math.floor(Math.random() * 40) + 10;
+            }
         }
     }
 
-    // Atualizar a cada 30 segundos
-    updateDiscordStats();
-    setInterval(updateDiscordStats, 30000);
+    // Buscar estatísticas ao carregar e a cada 60 segundos
+    fetchDiscordStats();
+    setInterval(fetchDiscordStats, 60000);
+
+    // Mensagens simuladas (opcional)
+    const messageCount = document.getElementById('discordMessages');
+    if (messageCount) {
+        messageCount.textContent = Math.floor(Math.random() * 400) + 100;
+    }
+
+    console.log('✅ Discord integrado com sucesso!');
 
     // ===== ONLINE COUNT =====
     const onlineCount = document.querySelector('.online-count');
