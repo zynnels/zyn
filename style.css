@@ -93,15 +93,6 @@ body {
     box-shadow: 0 15px 40px rgba(0, 68, 204, 0.6);
 }
 
-.btn.discord-btn {
-    background: linear-gradient(135deg, #5865F2, #404EED) !important;
-    box-shadow: 0 5px 25px rgba(88, 101, 242, 0.4) !important;
-}
-
-.btn.discord-btn:hover {
-    box-shadow: 0 15px 40px rgba(88, 101, 242, 0.6) !important;
-}
-
 /* ===== SEÇÕES ===== */
 .section {
     padding: 80px 0;
@@ -1050,6 +1041,61 @@ body {
     right: 15px;
 }
 
+/* ===== DISCORD SIMPLES ===== */
+.discord-simples {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.discord-card {
+    text-align: center;
+    background: rgba(0, 68, 204, 0.05);
+    border: 2px solid rgba(0, 68, 204, 0.3);
+    border-radius: 25px;
+    padding: 50px 40px;
+    transition: all 0.4s;
+}
+
+.discord-card:hover {
+    border-color: #5865F2;
+    box-shadow: 0 20px 60px rgba(88, 101, 242, 0.15);
+}
+
+.discord-card i {
+    font-size: 5rem;
+    color: #5865F2;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.discord-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.discord-card p {
+    color: #88bbff;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.discord-card .discord-btn {
+    background: linear-gradient(135deg, #5865F2, #404EED) !important;
+    box-shadow: 0 5px 25px rgba(88, 101, 242, 0.4) !important;
+    padding: 16px 45px;
+    font-size: 1.1rem;
+}
+
+.discord-card .discord-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(88, 101, 242, 0.6) !important;
+}
+
 /* ===== REDES SOCIAIS ===== */
 .redes-sociais {
     display: grid;
@@ -1300,8 +1346,10 @@ footer {
     .membro-mes-stats { justify-content: center; }
     .membro-mes-foto img.skin-3d { width: 120px; }
     .servidores-grid { grid-template-columns: 1fr; }
-    .discord-stats { grid-template-columns: 1fr; gap: 15px; }
-    .discord-widget iframe { height: 300px !important; }
+    .discord-card { padding: 30px 20px; }
+    .discord-card i { font-size: 3.5rem; }
+    .discord-card h3 { font-size: 1.3rem; }
+    .discord-card p { font-size: 0.95rem; }
     .carousel-slide { padding: 40px 20px; min-height: 150px; }
     .carousel-content h3 { font-size: 1.3rem; }
     .carousel-content p { font-size: 0.95rem; }
@@ -1325,7 +1373,6 @@ footer {
     .servidor-logo { height: 80px; }
     .servidor-info h3 { font-size: 1.1rem; }
     .servidor-detalhes { font-size: 0.75rem; }
-    .discord-count { font-size: 1.5rem; }
     .carousel-slide { padding: 30px 15px; min-height: 120px; }
     .carousel-content h3 { font-size: 1rem; }
     .carousel-content p { font-size: 0.85rem; }
