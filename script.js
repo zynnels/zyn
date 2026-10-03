@@ -8,6 +8,18 @@ let activeProduct = null;
 let chosenSize = null;
 let currentFilter = 'todos';
 
+function applyBrandConfig(){
+  const b = cfg.brand || {};
+  const ann = document.querySelector('#announcementBar');
+  if(ann && b.announcement){ ann.textContent = b.announcement; ann.hidden = false; }
+  if(document.querySelector('#brandNameTop')) document.querySelector('#brandNameTop').textContent = b.name || 'LZ';
+  if(document.querySelector('#brandStoreTop')) document.querySelector('#brandStoreTop').textContent = (b.storeName || 'LZ STORE').replace(/^LZ\s*/i,'') || 'STORE';
+  if(document.querySelector('#heroEyebrow')) document.querySelector('#heroEyebrow').textContent = b.heroEyebrow || 'LZ STORE / DROP 01';
+  if(document.querySelector('#heroTitle') && b.heroTitle) document.querySelector('#heroTitle').innerHTML = b.heroTitle;
+  if(document.querySelector('#heroText') && b.heroText) document.querySelector('#heroText').textContent = b.heroText;
+}
+applyBrandConfig();
+
 function matchesFilter(product, filter){
   if(filter === 'todos') return true;
   return product.type === filter || product.gender === filter;
@@ -15,7 +27,7 @@ function matchesFilter(product, filter){
 
 function renderProducts(filter='todos'){
   currentFilter = filter;
-  const list = cfg.products.filter(p => matchesFilter(p, filter));
+  const list = cfg.products.filter(p => p.visible !== false && matchesFilter(p, filter));
   $('#productGrid').innerHTML = list.map((p,i)=>`
     <article class="product-card reveal" data-id="${p.id}">
       <span class="product-index">${String(i+1).padStart(2,'0')}</span>
@@ -115,7 +127,7 @@ $('#searchBtn').onclick = openSearch;
 $('#closeSearch').onclick = closeSearch;
 $('#searchInput').oninput = e => searchProducts(e.target.value);
 function searchProducts(query=''){
-  const list = cfg.products.filter(p => `${p.name} ${p.type} ${p.gender} ${p.color}`.toLowerCase().includes(query.toLowerCase()));
+  const list = cfg.products.filter(p => p.visible !== false && `${p.name} ${p.type} ${p.gender} ${p.color}`.toLowerCase().includes(query.toLowerCase()));
   $('#searchResults').innerHTML = list.map(p => `
     <div class="search-item" data-search-id="${p.id}">
       <img src="${p.image}" alt="${p.name}">

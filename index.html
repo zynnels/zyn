@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <div class="announcement" id="announcementBar" hidden></div>
   <div class="noise"></div>
   <div class="cursor-glow" id="cursorGlow"></div>
 
@@ -19,8 +20,8 @@
     <a class="brand" href="#top" aria-label="LZ STORE">
       <img src="./assets/brand/lz-logo.png" alt="LZ logo">
       <div>
-        <strong>LZ</strong>
-        <span>STORE</span>
+        <strong id="brandNameTop">LZ</strong>
+        <span id="brandStoreTop">STORE</span>
       </div>
     </a>
 
@@ -40,9 +41,9 @@
   <main id="top">
     <section class="hero" id="drop">
       <div class="hero-copy reveal">
-        <p class="eyebrow">LZ STORE / DROP 01</p>
-        <h1>FORM.<br>WEIGHT.<br>PRESENCE.</h1>
-        <p class="hero-text">Camisetas e moletons com direção monocromática, tipografia forte e identidade própria. Sem excesso — só peça bonita.</p>
+        <p class="eyebrow" id="heroEyebrow">LZ STORE / DROP 01</p>
+        <h1 id="heroTitle">FORM.<br>WEIGHT.<br>PRESENCE.</h1>
+        <p class="hero-text" id="heroText">Camisetas e moletons com direção monocromática, tipografia forte e identidade própria. Sem excesso — só peça bonita.</p>
         <div class="hero-actions">
           <button class="primary-btn" data-scroll="#catalogo">VER CATÁLOGO</button>
           <button class="secondary-btn" data-scroll="#highlights">VER DESTAQUES</button>

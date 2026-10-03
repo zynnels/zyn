@@ -1,4 +1,5 @@
-window.LZ_STORE = {
+// LZ STORE — configuração base. O painel /admin pode sobrescrever estes dados neste navegador.
+const LZ_DEFAULT_STORE = {
   "brand": {
     "name": "LZ",
     "storeName": "LZ STORE",
@@ -265,3 +266,22 @@ window.LZ_STORE = {
     }
   ]
 };
+
+(function(){
+  try {
+    const saved = localStorage.getItem('lz-admin-config-v1');
+    if(saved){
+      const parsed = JSON.parse(saved);
+      window.LZ_STORE = {
+        ...LZ_DEFAULT_STORE,
+        ...parsed,
+        brand: {...LZ_DEFAULT_STORE.brand, ...(parsed.brand||{})},
+        products: Array.isArray(parsed.products) ? parsed.products : LZ_DEFAULT_STORE.products
+      };
+    } else {
+      window.LZ_STORE = LZ_DEFAULT_STORE;
+    }
+  } catch(e){
+    window.LZ_STORE = LZ_DEFAULT_STORE;
+  }
+})();
