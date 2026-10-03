@@ -3,57 +3,87 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#070707">
-  <meta name="description" content="LZ STORE — Collection 01. Streetwear masculino e feminino.">
-  <title>LZ STORE — Collection 01</title>
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="LZ STORE — coleção premium de camisetas e moletons.">
+  <title>LZ STORE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div class="grain"></div>
+  <div class="noise"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
   <header class="nav">
-    <a class="brand" href="#top" aria-label="LZ STORE">LZ</a>
+    <a class="brand" href="#top" aria-label="LZ STORE">
+      <img src="./assets/brand/lz-logo.png" alt="LZ logo">
+      <div>
+        <strong>LZ</strong>
+        <span>STORE</span>
+      </div>
+    </a>
+
     <nav class="nav-links">
-      <a href="#catalogo">Coleção</a>
-      <a href="#editorial">Editorial</a>
-      <button class="text-btn" id="searchBtn">Buscar</button>
+      <a href="#drop">Drop</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#highlights">Destaques</a>
+      <button class="link-button" id="searchBtn">Buscar</button>
     </nav>
-    <button class="cart-btn" id="cartBtn">Carrinho <span id="cartCount">0</span></button>
+
+    <div class="nav-actions">
+      <button class="pill-btn" data-scroll="#catalogo">Comprar</button>
+      <button class="cart-btn" id="cartBtn">Carrinho <span id="cartCount">0</span></button>
+    </div>
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">LZ STORE / COLLECTION 01 / 2026</p>
-        <h1>NEW<br><em>FORMS.</em></h1>
-        <div class="hero-bottom">
-          <p>Streetwear independente com identidade própria, recortes editoriais e peças feitas para serem lembradas.</p>
-          <a class="arrow-link" href="#catalogo">Ver coleção <span>↘</span></a>
+    <section class="hero" id="drop">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">LZ STORE / DROP 01</p>
+        <h1>FORM.<br>WEIGHT.<br>PRESENCE.</h1>
+        <p class="hero-text">Camisetas e moletons com direção monocromática, tipografia forte e identidade própria. Sem excesso — só peça bonita.</p>
+        <div class="hero-actions">
+          <button class="primary-btn" data-scroll="#catalogo">VER CATÁLOGO</button>
+          <button class="secondary-btn" data-scroll="#highlights">VER DESTAQUES</button>
+        </div>
+        <div class="hero-stats">
+          <div><strong>16</strong><span>Peças</span></div>
+          <div><strong>2</strong><span>Categorias</span></div>
+          <div><strong>2026</strong><span>Drop</span></div>
         </div>
       </div>
-      <div class="hero-visual">
-        <img src="./assets/products/noir-motion.png" alt="Noir Motion Tee">
-        <div class="hero-number">01</div>
+
+      <div class="hero-stage reveal">
+        <article class="floating-card big rotate-a">
+          <img src="./assets/products/tee-noir-motion.png" alt="Noir Motion Tee">
+        </article>
+        <article class="floating-card small rotate-b">
+          <img src="./assets/products/hoodie-noise-with-purpose.png" alt="Noise With Purpose Hoodie">
+        </article>
+        <article class="floating-card strip rotate-c">
+          <img src="./assets/products/tee-soft-riot.png" alt="Soft Riot Tee">
+        </article>
+        <div class="hero-ring"></div>
       </div>
     </section>
 
-    <section class="marquee" aria-label="LZ Store">
-      <div class="marquee-track">
-        <span>LZ STORE</span><i>✦</i><span>COLLECTION 01</span><i>✦</i><span>EST. 2026</span><i>✦</i>
-        <span>LZ STORE</span><i>✦</i><span>COLLECTION 01</span><i>✦</i><span>EST. 2026</span><i>✦</i>
+    <section class="ticker">
+      <div class="ticker-track">
+        <span>LZ STORE</span><i>•</i><span>CAMISETAS</span><i>•</i><span>MOLETONS</span><i>•</i><span>DROP 01</span><i>•</i><span>LZ STORE</span><i>•</i><span>CAMISETAS</span><i>•</i><span>MOLETONS</span><i>•</i><span>DROP 01</span><i>•</i>
       </div>
     </section>
 
     <section class="catalog" id="catalogo">
-      <div class="section-head">
+      <div class="section-top reveal">
         <div>
-          <p class="eyebrow">SHOP / DROP 01</p>
-          <h2>THE COLLECTION</h2>
+          <p class="eyebrow">SELEÇÃO COMPLETA</p>
+          <h2>SHOP THE DROP</h2>
         </div>
-        <div class="filters" role="tablist">
+        <div class="filters">
           <button class="filter active" data-filter="todos">Todos</button>
+          <button class="filter" data-filter="camiseta">Camisetas</button>
+          <button class="filter" data-filter="moletom">Moletons</button>
           <button class="filter" data-filter="masculino">Masculino</button>
           <button class="filter" data-filter="feminino">Feminino</button>
         </div>
@@ -61,45 +91,67 @@
       <div class="product-grid" id="productGrid"></div>
     </section>
 
-    <section class="editorial" id="editorial">
-      <div class="editorial-image">
-        <img src="./assets/lz-wallpaper-1920x1080.png" alt="LZ Store editorial">
-      </div>
-      <div class="editorial-copy">
-        <p class="eyebrow">LZ / EDITORIAL</p>
-        <h2>NO NOISE.<br>JUST FORM.</h2>
-        <p>A primeira coleção mistura contraste, tipografia e referências clássicas com uma linguagem urbana direta. Sem excesso. Sem personagem. Só identidade.</p>
-      </div>
+    <section class="highlights" id="highlights">
+      <article class="highlight-card reveal slide-left">
+        <div class="highlight-copy">
+          <p class="eyebrow">LZ / CAMISETAS</p>
+          <h3>EDITORIAL<br>ESSENTIALS</h3>
+          <p>Shapes limpos, frente minimalista e artes costas com leitura forte para construir presença sem precisar exagerar.</p>
+          <button class="inline-link" data-filter-jump="camiseta">Ver camisetas ↗</button>
+        </div>
+        <div class="highlight-media">
+          <img src="./assets/products/tee-first-edit.png" alt="First Edit Tee">
+        </div>
+      </article>
+
+      <article class="highlight-card alt reveal slide-right">
+        <div class="highlight-media">
+          <img src="./assets/products/hoodie-silently-iconic.png" alt="Silently Iconic Hoodie">
+        </div>
+        <div class="highlight-copy">
+          <p class="eyebrow">LZ / MOLETONS</p>
+          <h3>HEAVY<br>LAYERS</h3>
+          <p>Moletons em cores sólidas com tipografia grande e proposta visual de streetwear premium para o catálogo da LZ.</p>
+          <button class="inline-link" data-filter-jump="moletom">Ver moletons ↗</button>
+        </div>
+      </article>
     </section>
 
-    <section class="statement">
-      <p>DROP 01</p>
-      <h2>BUILT TO EXIST<br>OUTSIDE THE FEED.</h2>
-      <span>LZ STORE / 2026</span>
+    <section class="manifesto reveal">
+      <div class="manifesto-line"></div>
+      <p>LZ STORE</p>
+      <h2>BUILT TO LOOK<br>BETTER OFFLINE.</h2>
+      <span>DROP 01 / PORTUGAL / ONLINE</span>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-brand">LZ</div>
-    <div>
-      <p>© 2026 LZ STORE</p>
-      <p>PORTUGAL / ONLINE</p>
+  <footer class="footer">
+    <div class="footer-brand">
+      <img src="./assets/brand/lz-logo.png" alt="LZ logo">
+      <div>
+        <strong>LZ STORE</strong>
+        <span>EST. 2026</span>
+      </div>
     </div>
-    <div>
-      <a href="#">Instagram</a>
-      <a href="#">TikTok</a>
+    <div class="footer-links">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#highlights">Destaques</a>
+      <a href="#top">Topo</a>
     </div>
   </footer>
 
   <div class="overlay" id="backdrop"></div>
 
   <aside class="drawer" id="cartDrawer" aria-hidden="true">
-    <div class="drawer-head"><h3>SEU CARRINHO</h3><button id="closeCart">×</button></div>
+    <div class="drawer-head">
+      <h3>SEU CARRINHO</h3>
+      <button id="closeCart">×</button>
+    </div>
     <div id="cartItems" class="cart-items"></div>
     <p id="cartEmpty" class="empty">Seu carrinho está vazio.</p>
     <div class="drawer-foot">
       <div><span>Total</span><strong id="cartTotal">€0,00</strong></div>
-      <button class="primary">FINALIZAR COMPRA</button>
+      <button class="primary-btn full">FINALIZAR COMPRA</button>
     </div>
   </aside>
 
@@ -107,20 +159,20 @@
     <button class="modal-close" id="modalClose">×</button>
     <div class="modal-media"><img id="modalImage" alt=""></div>
     <div class="modal-info">
-      <p class="eyebrow" id="modalGender"></p>
+      <p class="eyebrow" id="modalType"></p>
       <h3 id="modalName"></h3>
       <div class="modal-price" id="modalPrice"></div>
       <p id="modalDesc"></p>
       <p class="label">TAMANHO</p>
       <div class="size-grid" id="sizeGrid"></div>
-      <button class="primary" id="modalAdd">ADICIONAR AO CARRINHO</button>
+      <button class="primary-btn full" id="modalAdd">ADICIONAR AO CARRINHO</button>
     </div>
   </div>
 
   <div class="search-panel" id="searchOverlay">
     <button id="closeSearch">×</button>
     <input id="searchInput" placeholder="BUSCAR PRODUTO..." autocomplete="off">
-    <div id="searchResults"></div>
+    <div id="searchResults" class="search-results"></div>
   </div>
 
   <script src="./config.js"></script>

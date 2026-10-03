@@ -1,17 +1,17 @@
-# LZ STORE V3
+# LZ STORE V4
 
-Site estático pronto para GitHub + Vercel.
+Versão melhorada com camisetas + moletons.
 
 ## Produtos
 Edite `config.js`.
 
-## Preços atuais
+## Preços
 - Masculino: €34,99
 - Feminino: €29,99
 
-## Imagens
-`assets/products/`
+## Estrutura
+- `assets/products/` = imagens dos produtos
+- `assets/brand/` = logo da marca
 
-## Deploy na Vercel
-Importe o repositório e escolha Framework Preset: Other.
-Não precisa de build command.
+## Deploy
+Suba tudo no GitHub e importe na Vercel com preset `Other`.
