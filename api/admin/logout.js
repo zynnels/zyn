@@ -1,0 +1,1 @@
+module.exports=(req,res)=>{res.setHeader('Set-Cookie','lz_admin=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0; Secure');res.json({ok:true})};

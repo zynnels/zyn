@@ -1,153 +1,57 @@
 
-const cfg = window.LZ_STORE;
-const $ = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
-const money = n => new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR'}).format(n);
-let cart = JSON.parse(localStorage.getItem('lz-cart-v4') || '[]');
-let activeProduct = null;
-let chosenSize = null;
-let currentFilter = 'todos';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const money=n=>new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR'}).format(n);
+let cfg,products=[],cart=JSON.parse(localStorage.getItem('lz-cart-v6')||'[]'),activeProduct=null,chosenSize=null;
 
-function applyBrandConfig(){
-  const b = cfg.brand || {};
-  const ann = document.querySelector('#announcementBar');
-  if(ann && b.announcement){ ann.textContent = b.announcement; ann.hidden = false; }
-  if(document.querySelector('#brandNameTop')) document.querySelector('#brandNameTop').textContent = b.name || 'LZ';
-  if(document.querySelector('#brandStoreTop')) document.querySelector('#brandStoreTop').textContent = (b.storeName || 'LZ STORE').replace(/^LZ\s*/i,'') || 'STORE';
-  if(document.querySelector('#heroEyebrow')) document.querySelector('#heroEyebrow').textContent = b.heroEyebrow || 'LZ STORE / DROP 01';
-  if(document.querySelector('#heroTitle') && b.heroTitle) document.querySelector('#heroTitle').innerHTML = b.heroTitle;
-  if(document.querySelector('#heroText') && b.heroText) document.querySelector('#heroText').textContent = b.heroText;
+async function init(){
+ const r=await fetch('/config.json?ts='+Date.now(),{cache:'no-store'}); cfg=await r.json();
+ products=(cfg.products||[]).filter(p=>p.visible!==false);
+ applyBrand();renderHero();renderProducts();renderCart();wire();attachReveal();
 }
-applyBrandConfig();
-
-function matchesFilter(product, filter){
-  if(filter === 'todos') return true;
-  return product.type === filter || product.gender === filter;
+function applyBrand(){
+ const b=cfg.brand||{},s=cfg.settings||{};
+ $('#heroKicker').textContent=b.heroKicker||'LZ STORE';
+ $('#heroTitle').innerHTML=(b.heroTitle||'FORM.\\nWEIGHT.\\nPRESENCE.').replaceAll('\\n','<br>');
+ $('#heroText').textContent=b.heroText||'';
+ $('#catalogTitle').textContent=s.catalogTitle||'SHOP THE DROP';
+ $('#productCount').textContent=products.length;
+ $('#announcement').textContent=b.announcement||'';
+ $('#announcement').classList.toggle('show',!!(s.showAnnouncement&&b.announcement));
+ $('#cursorGlow').style.display=s.showCursorGlow===false?'none':'block';
 }
-
+function renderHero(){
+ const f=products.filter(p=>p.featured).slice(0,3), use=f.length>=3?f:products.slice(0,3);
+ $('#heroStage').innerHTML=use.map((p,i)=>`<article class="floating-card ${i===0?'big rotate-a':i===1?'small rotate-b':'strip rotate-c'}"><img src="${p.image}" alt="${p.name}"></article>`).join('')+'<div class="hero-ring"></div>';
+}
+function matches(p,f){return f==='todos'||p.type===f||p.gender===f}
 function renderProducts(filter='todos'){
-  currentFilter = filter;
-  const list = cfg.products.filter(p => p.visible !== false && matchesFilter(p, filter));
-  $('#productGrid').innerHTML = list.map((p,i)=>`
-    <article class="product-card reveal" data-id="${p.id}">
-      <span class="product-index">${String(i+1).padStart(2,'0')}</span>
-      <div class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy"></div>
-      <div class="product-meta">
-        <div><h3>${p.name}</h3><p>${p.type} / ${p.gender} / ${p.color}</p></div>
-        <div class="product-price">${money(p.price)}</div>
-      </div>
-    </article>`).join('');
-
-  $$('.product-card').forEach(card => card.onclick = () => openProduct(card.dataset.id));
-  attachReveal();
+ const list=products.filter(p=>matches(p,filter));
+ $('#productGrid').innerHTML=list.map((p,i)=>`<article class="product-card reveal" data-id="${p.id}"><span class="product-index">${String(i+1).padStart(2,'0')}</span><div class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy"></div><div class="product-meta"><div><h3>${p.name}</h3><p>${p.type} / ${p.gender} / ${p.color}</p></div><div class="product-price">${money(p.price)}</div></div></article>`).join('');
+ $$('.product-card').forEach(c=>c.onclick=()=>openProduct(c.dataset.id));attachReveal();
 }
-renderProducts();
-
-$$('.filter').forEach(btn => btn.onclick = () => {
-  $$('.filter').forEach(x => x.classList.remove('active'));
-  btn.classList.add('active');
-  renderProducts(btn.dataset.filter);
-});
-
-$$('[data-scroll]').forEach(btn => btn.onclick = () => {
-  document.querySelector(btn.dataset.scroll).scrollIntoView({behavior:'smooth'});
-});
-
-$$('[data-filter-jump]').forEach(btn => btn.onclick = () => {
-  document.querySelector('#catalogo').scrollIntoView({behavior:'smooth'});
-  const f = btn.dataset.filterJump;
-  setTimeout(() => document.querySelector(`.filter[data-filter="${f}"]`).click(), 450);
-});
-
+function wire(){
+ $$('.filter').forEach(b=>b.onclick=()=>{$$('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderProducts(b.dataset.filter)});
+ $$('[data-scroll]').forEach(b=>b.onclick=()=>$(b.dataset.scroll).scrollIntoView({behavior:'smooth'}));
+ $$('[data-filter-jump]').forEach(b=>b.onclick=()=>{$('#catalogo').scrollIntoView({behavior:'smooth'});setTimeout(()=>document.querySelector(`.filter[data-filter="${b.dataset.filterJump}"]`).click(),350)});
+ $('#cartBtn').onclick=openCart;$('#closeCart').onclick=closeAll;$('#backdrop').onclick=closeAll;$('#modalClose').onclick=closeAll;
+ $('#searchBtn').onclick=openSearch;$('#closeSearch').onclick=closeSearch;$('#searchInput').oninput=e=>searchProducts(e.target.value);$('#modalAdd').onclick=addToCart;
+ window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeAll();closeSearch()}});
+ const g=$('#cursorGlow');window.addEventListener('pointermove',e=>{g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
+}
 function openProduct(id){
-  activeProduct = cfg.products.find(p => p.id === id); chosenSize = null;
-  $('#modalImage').src = activeProduct.image;
-  $('#modalName').textContent = activeProduct.name;
-  $('#modalType').textContent = `${activeProduct.type} / ${activeProduct.gender} / ${activeProduct.color}`;
-  $('#modalPrice').textContent = money(activeProduct.price);
-  $('#modalDesc').textContent = activeProduct.description;
-  $('#sizeGrid').innerHTML = activeProduct.sizes.map(s => `<button class="size-btn" data-size="${s}">${s}</button>`).join('');
-  $$('.size-btn').forEach(btn => btn.onclick = () => {
-    $$('.size-btn').forEach(x=>x.classList.remove('selected'));
-    btn.classList.add('selected');
-    chosenSize = btn.dataset.size;
-  });
-  $('#productModal').classList.add('open');
-  $('#backdrop').classList.add('show');
-  document.body.style.overflow = 'hidden';
+ activeProduct=products.find(p=>p.id===id);chosenSize=null;
+ $('#modalImage').src=activeProduct.image;$('#modalName').textContent=activeProduct.name;$('#modalType').textContent=`${activeProduct.type} / ${activeProduct.gender} / ${activeProduct.color}`;$('#modalPrice').textContent=money(activeProduct.price);$('#modalDesc').textContent=activeProduct.description||'';
+ $('#sizeGrid').innerHTML=(activeProduct.sizes||[]).map(s=>`<button class="size-btn" data-size="${s}">${s}</button>`).join('');
+ $$('.size-btn').forEach(b=>b.onclick=()=>{$$('.size-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');chosenSize=b.dataset.size});
+ $('#productModal').classList.add('open');$('#backdrop').classList.add('show');document.body.style.overflow='hidden';
 }
-
-function closeModal(){ $('#productModal').classList.remove('open'); }
-function closeCart(){ $('#cartDrawer').classList.remove('open'); }
-function closeOverlayIfNone(){
-  if(!$('#productModal').classList.contains('open') && !$('#cartDrawer').classList.contains('open')){
-    $('#backdrop').classList.remove('show');
-    document.body.style.overflow = '';
-  }
-}
-function closeAll(){ closeModal(); closeCart(); $('#backdrop').classList.remove('show'); document.body.style.overflow = ''; }
-$('#modalClose').onclick = () => { closeModal(); closeOverlayIfNone(); };
-$('#closeCart').onclick = () => { closeCart(); closeOverlayIfNone(); };
-$('#backdrop').onclick = closeAll;
-
-$('#modalAdd').onclick = () => {
-  if(!chosenSize){
-    const btn = $('#modalAdd');
-    btn.textContent = 'ESCOLHA UM TAMANHO';
-    setTimeout(()=>btn.textContent='ADICIONAR AO CARRINHO', 1200);
-    return;
-  }
-  const cartId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now());
-  cart.push({...activeProduct, size: chosenSize, cartId});
-  saveCart();
-  closeAll();
-  openCart();
-};
-
-function saveCart(){ localStorage.setItem('lz-cart-v4', JSON.stringify(cart)); renderCart(); }
-function renderCart(){
-  $('#cartCount').textContent = cart.length;
-  $('#cartEmpty').style.display = cart.length ? 'none' : 'block';
-  $('#cartItems').innerHTML = cart.map(item => `
-    <div class="cart-item">
-      <img src="${item.image}" alt="">
-      <div><h4>${item.name}</h4><small>${item.size} / ${item.color}</small><p>${money(item.price)}</p></div>
-      <button data-remove="${item.cartId}">×</button>
-    </div>`).join('');
-  $('#cartTotal').textContent = money(cart.reduce((sum,item)=>sum+item.price,0));
-  $$('[data-remove]').forEach(btn => btn.onclick = () => { cart = cart.filter(item => String(item.cartId)!==String(btn.dataset.remove)); saveCart(); });
-}
-renderCart();
-function openCart(){ renderCart(); $('#cartDrawer').classList.add('open'); $('#backdrop').classList.add('show'); document.body.style.overflow = 'hidden'; }
-$('#cartBtn').onclick = openCart;
-
-function openSearch(){ $('#searchOverlay').classList.add('open'); searchProducts(''); setTimeout(()=>$('#searchInput').focus(), 120); }
-function closeSearch(){ $('#searchOverlay').classList.remove('open'); $('#searchInput').value = ''; }
-$('#searchBtn').onclick = openSearch;
-$('#closeSearch').onclick = closeSearch;
-$('#searchInput').oninput = e => searchProducts(e.target.value);
-function searchProducts(query=''){
-  const list = cfg.products.filter(p => p.visible !== false && `${p.name} ${p.type} ${p.gender} ${p.color}`.toLowerCase().includes(query.toLowerCase()));
-  $('#searchResults').innerHTML = list.map(p => `
-    <div class="search-item" data-search-id="${p.id}">
-      <img src="${p.image}" alt="${p.name}">
-      <h4>${p.name}</h4>
-      <span>${money(p.price)}</span>
-    </div>`).join('');
-  $$('[data-search-id]').forEach(el => el.onclick = () => { closeSearch(); openProduct(el.dataset.searchId); });
-}
-
-function attachReveal(){
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target);} });
-  }, {threshold:.12});
-  $$('.reveal').forEach(el=>obs.observe(el));
-}
-attachReveal();
-
-window.addEventListener('keydown', e => { if(e.key === 'Escape'){ closeAll(); closeSearch(); }});
-const cursorGlow = $('#cursorGlow');
-window.addEventListener('pointermove', e => {
-  cursorGlow.style.left = e.clientX + 'px';
-  cursorGlow.style.top = e.clientY + 'px';
-});
+function addToCart(){if(!chosenSize){const b=$('#modalAdd');b.textContent='ESCOLHA UM TAMANHO';setTimeout(()=>b.textContent='ADICIONAR AO CARRINHO',1000);return}cart.push({...activeProduct,size:chosenSize,cartId:crypto.randomUUID?crypto.randomUUID():Date.now()});saveCart();closeAll();openCart()}
+function saveCart(){localStorage.setItem('lz-cart-v6',JSON.stringify(cart));renderCart()}
+function renderCart(){$('#cartCount').textContent=cart.length;$('#cartEmpty').style.display=cart.length?'none':'block';$('#cartItems').innerHTML=cart.map(x=>`<div class="cart-item"><img src="${x.image}"><div><h4>${x.name}</h4><small>${x.size} / ${x.color}</small><p>${money(x.price)}</p></div><button data-remove="${x.cartId}">×</button></div>`).join('');$('#cartTotal').textContent=money(cart.reduce((a,b)=>a+b.price,0));$$('[data-remove]').forEach(b=>b.onclick=()=>{cart=cart.filter(x=>String(x.cartId)!==String(b.dataset.remove));saveCart()})}
+function openCart(){renderCart();$('#cartDrawer').classList.add('open');$('#backdrop').classList.add('show');document.body.style.overflow='hidden'}
+function closeAll(){$('#productModal').classList.remove('open');$('#cartDrawer').classList.remove('open');$('#backdrop').classList.remove('show');document.body.style.overflow=''}
+function openSearch(){$('#searchOverlay').classList.add('open');searchProducts('');setTimeout(()=>$('#searchInput').focus(),100)}
+function closeSearch(){$('#searchOverlay').classList.remove('open');$('#searchInput').value=''}
+function searchProducts(q=''){const list=products.filter(p=>`${p.name} ${p.type} ${p.gender} ${p.color}`.toLowerCase().includes(q.toLowerCase()));$('#searchResults').innerHTML=list.map(p=>`<div class="search-item" data-search-id="${p.id}"><img src="${p.image}"><h4>${p.name}</h4><span>${money(p.price)}</span></div>`).join('');$$('[data-search-id]').forEach(e=>e.onclick=()=>{closeSearch();openProduct(e.dataset.searchId)})}
+function attachReveal(){const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}}),{threshold:.1});$$('.reveal:not(.visible)').forEach(e=>o.observe(e))}
+init().catch(console.error);

@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div class="announcement" id="announcementBar" hidden></div>
   <div class="noise"></div>
   <div class="cursor-glow" id="cursorGlow"></div>
 
@@ -20,8 +19,8 @@
     <a class="brand" href="#top" aria-label="LZ STORE">
       <img src="./assets/brand/lz-logo.png" alt="LZ logo">
       <div>
-        <strong id="brandNameTop">LZ</strong>
-        <span id="brandStoreTop">STORE</span>
+        <strong>LZ</strong>
+        <span>STORE</span>
       </div>
     </a>
 
@@ -38,34 +37,25 @@
     </div>
   </header>
 
+  <div class="announcement" id="announcement"></div>
   <main id="top">
     <section class="hero" id="drop">
       <div class="hero-copy reveal">
-        <p class="eyebrow" id="heroEyebrow">LZ STORE / DROP 01</p>
+        <p class="eyebrow" id="heroKicker">LZ STORE / DROP 01</p>
         <h1 id="heroTitle">FORM.<br>WEIGHT.<br>PRESENCE.</h1>
-        <p class="hero-text" id="heroText">Camisetas e moletons com direção monocromática, tipografia forte e identidade própria. Sem excesso — só peça bonita.</p>
+        <p class="hero-text" id="heroText"></p>
         <div class="hero-actions">
           <button class="primary-btn" data-scroll="#catalogo">VER CATÁLOGO</button>
           <button class="secondary-btn" data-scroll="#highlights">VER DESTAQUES</button>
         </div>
         <div class="hero-stats">
-          <div><strong>16</strong><span>Peças</span></div>
+          <div><strong id="productCount">0</strong><span>Peças</span></div>
           <div><strong>2</strong><span>Categorias</span></div>
           <div><strong>2026</strong><span>Drop</span></div>
         </div>
       </div>
 
-      <div class="hero-stage reveal">
-        <article class="floating-card big rotate-a">
-          <img src="./assets/products/tee-noir-motion.png" alt="Noir Motion Tee">
-        </article>
-        <article class="floating-card small rotate-b">
-          <img src="./assets/products/hoodie-noise-with-purpose.png" alt="Noise With Purpose Hoodie">
-        </article>
-        <article class="floating-card strip rotate-c">
-          <img src="./assets/products/tee-soft-riot.png" alt="Soft Riot Tee">
-        </article>
-        <div class="hero-ring"></div>
+      <div class="hero-stage reveal" id="heroStage">
       </div>
     </section>
 
@@ -79,7 +69,7 @@
       <div class="section-top reveal">
         <div>
           <p class="eyebrow">SELEÇÃO COMPLETA</p>
-          <h2>SHOP THE DROP</h2>
+          <h2 id="catalogTitle">SHOP THE DROP</h2>
         </div>
         <div class="filters">
           <button class="filter active" data-filter="todos">Todos</button>
@@ -176,7 +166,6 @@
     <div id="searchResults" class="search-results"></div>
   </div>
 
-  <script src="./config.js"></script>
   <script src="./script.js"></script>
 </body>
 </html>

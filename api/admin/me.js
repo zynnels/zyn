@@ -1,0 +1,1 @@
+const{isAdmin}=require('../../lib/auth');const gh=require('../../lib/github');module.exports=(req,res)=>res.json({authenticated:isAdmin(req),githubConfigured:gh.configured(),repo:gh.configured()?`${gh.settings().owner}/${gh.settings().repo}`:null});

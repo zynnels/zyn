@@ -1,24 +1,22 @@
-# LZ STORE V5 — ADMIN
+# LZ STORE V6 — ADMIN AUTOMÁTICO
 
-## Loja
-Abra `/` normalmente.
+Acesse `/admin` e use a senha `787878`.
 
-## Painel administrativo
-Abra `/admin` ou `/admin/`.
-Senha inicial: `787878`
+## Para o botão SALVAR E PUBLICAR funcionar para todo mundo
+Na Vercel, em Settings > Environment Variables, configure:
 
-O painel permite:
-- editar/adicionar/excluir produtos;
-- ocultar produtos;
-- editar preços, nomes, imagens, tamanhos e descrições;
-- editar aviso do topo e conteúdo principal da home;
-- exportar `config.js`;
-- backup/importação JSON.
+ADMIN_PASSWORD=787878
+ADMIN_SESSION_SECRET=uma-chave-longa
+GITHUB_TOKEN=seu Fine-grained Personal Access Token do GitHub com permissão Contents: Read and write no repo
+GITHUB_OWNER=seu usuário GitHub
+GITHUB_REPO=nome do repositório
+GITHUB_BRANCH=main
 
-### Importante
-Como esta versão é um site estático, as alterações feitas no painel são salvas no `localStorage` deste navegador. Para publicar para todos os visitantes, use **Backup & Exportar > Baixar config.js** e substitua o `config.js` do GitHub.
+Depois faça Redeploy.
 
-A senha `787878` é uma barreira simples no frontend e não é apropriada para uma loja com dados sensíveis ou pagamentos reais. Uma versão futura pode usar autenticação server-side.
+Quando você clicar em SALVAR E PUBLICAR:
+1. o painel atualiza `config.json` no GitHub;
+2. a Vercel detecta o commit;
+3. o site redeploya automaticamente.
 
-## Vercel
-Framework Preset: `Other`. Sem build command.
+O painel também permite upload de imagens direto para `assets/products/`.
