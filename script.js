@@ -1,18 +1,74 @@
-const cfg=window.LZ_CONFIG; let cart=JSON.parse(localStorage.getItem('lz-cart-v2')||'[]'),active=null,size=null;
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const money=n=>new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR'}).format(n);
-function render(filter='todos'){const list=filter==='todos'?cfg.products:cfg.products.filter(p=>p.category===filter);$('#productGrid').innerHTML=list.map(p=>`<article class="product-card reveal-now" data-id="${p.id}"><div class="product-visual"><span>${p.badge}</span><img src="${p.image}" alt="${p.name}" loading="lazy"><button>QUICK VIEW ↗</button></div><div class="product-meta"><div><h3>${p.name}</h3><p>${p.color}</p></div><strong>${money(p.price)}</strong></div></article>`).join('');$$('.product-card').forEach(c=>c.onclick=()=>openProduct(c.dataset.id));}
-render();
-$$('.filter').forEach(b=>b.onclick=()=>{$$('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(b.dataset.filter)});
-$$('[data-go]').forEach(b=>b.onclick=()=>{location.hash='catalogo';setTimeout(()=>$('.filter[data-filter="'+b.dataset.go+'"]').click(),200)});
-function openProduct(id){active=cfg.products.find(p=>p.id===id);size=null;$('#modalImage').src=active.image;$('#modalName').textContent=active.name;$('#modalBadge').textContent=active.badge;$('#modalColor').textContent=active.color;$('#modalPrice').textContent=money(active.price);$('#modalDesc').textContent=active.description;$('#sizeGrid').innerHTML=active.sizes.map(s=>`<button data-size="${s}">${s}</button>`).join('');$$('[data-size]').forEach(b=>b.onclick=()=>{$$('[data-size]').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');size=b.dataset.size});$('#productModal').classList.add('open');$('#backdrop').classList.add('show');document.body.style.overflow='hidden'}
-function closeAll(){$('#productModal').classList.remove('open');$('#cartDrawer').classList.remove('open');$('#backdrop').classList.remove('show');document.body.style.overflow=''}
-$('#modalClose').onclick=closeAll;$('#backdrop').onclick=closeAll;
-$('#modalAdd').onclick=()=>{if(!size){$('#modalAdd').textContent='SELECIONE UM TAMANHO';setTimeout(()=>$('#modalAdd').textContent='ADICIONAR À BAG',1000);return}cart.push({...active,size,cartId:Date.now()});save();closeAll();openCart()};
-function save(){localStorage.setItem('lz-cart-v2',JSON.stringify(cart));renderCart()}
-function renderCart(){$('#cartCount').textContent=cart.length;$('#cartEmpty').style.display=cart.length?'none':'block';$('#cartItems').innerHTML=cart.map(i=>`<div class="cart-item"><img src="${i.image}"><div><h4>${i.name}</h4><small>${i.color} · ${i.size}</small><strong>${money(i.price)}</strong></div><button data-remove="${i.cartId}">×</button></div>`).join('');$('#cartTotal').textContent=money(cart.reduce((a,b)=>a+b.price,0));$$('[data-remove]').forEach(b=>b.onclick=()=>{cart=cart.filter(i=>i.cartId!=b.dataset.remove);save()})} renderCart();
-function openCart(){$('#cartDrawer').classList.add('open');$('#backdrop').classList.add('show');document.body.style.overflow='hidden'} $('#cartBtn').onclick=openCart;$('#closeCart').onclick=closeAll;
-$('#newsletterForm').onsubmit=e=>{e.preventDefault();$('#newsletterNote').textContent='Cadastro confirmado. Você receberá os próximos lançamentos.';e.target.reset()};
-$('#searchBtn').onclick=()=>{$('#searchOverlay').classList.add('open');$('#searchInput').focus();search('')};$('#closeSearch').onclick=()=>$('#searchOverlay').classList.remove('open');$('#searchInput').oninput=e=>search(e.target.value);
-function search(q){const l=cfg.products.filter(p=>(p.name+' '+p.color).toLowerCase().includes(q.toLowerCase()));$('#searchResults').innerHTML=l.map(p=>`<button class="search-result" data-search="${p.id}"><img src="${p.image}"><span>${p.name}<small>${p.color}</small></span><strong>${money(p.price)}</strong></button>`).join('');$$('[data-search]').forEach(b=>b.onclick=()=>{$('#searchOverlay').classList.remove('open');openProduct(b.dataset.search)})}
-const obs=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('visible')),{threshold:.12});$$('.reveal').forEach(e=>obs.observe(e));window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeAll();$('#searchOverlay').classList.remove('open')}});
+
+const cfg = window.LZ_STORE;
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const money = n => new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR'}).format(n);
+
+let cart = JSON.parse(localStorage.getItem('lz-cart-v3') || '[]');
+let activeProduct = null;
+let chosenSize = null;
+
+function renderProducts(filter='todos'){
+  const list = filter === 'todos' ? cfg.products : cfg.products.filter(p=>p.gender===filter);
+  $('#productGrid').innerHTML = list.map((p,i)=>`
+    <article class="product-card" data-id="${p.id}">
+      <span class="product-index">${String(i+1).padStart(2,'0')}</span>
+      <div class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy"></div>
+      <div class="product-meta">
+        <div><h3>${p.name}</h3><p>${p.gender} / ${p.color}</p></div>
+        <div class="product-price">${money(p.price)}</div>
+      </div>
+    </article>`).join('');
+  $$('.product-card').forEach(c=>c.onclick=()=>openProduct(c.dataset.id));
+}
+renderProducts();
+
+$$('.filter').forEach(b=>b.onclick=()=>{
+  $$('.filter').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); renderProducts(b.dataset.filter);
+});
+
+function openProduct(id){
+  activeProduct = cfg.products.find(p=>p.id===id); chosenSize = null;
+  $('#modalImage').src = activeProduct.image;
+  $('#modalName').textContent = activeProduct.name;
+  $('#modalGender').textContent = `${activeProduct.gender} / ${activeProduct.color}`;
+  $('#modalPrice').textContent = money(activeProduct.price);
+  $('#modalDesc').textContent = activeProduct.description;
+  $('#sizeGrid').innerHTML = activeProduct.sizes.map(s=>`<button class="size-btn" data-size="${s}">${s}</button>`).join('');
+  $$('.size-btn').forEach(b=>b.onclick=()=>{ $$('.size-btn').forEach(x=>x.classList.remove('selected')); b.classList.add('selected'); chosenSize=b.dataset.size; });
+  $('#productModal').classList.add('open'); $('#backdrop').classList.add('show'); document.body.style.overflow='hidden';
+}
+function closeAll(){
+  $('#productModal').classList.remove('open');
+  $('#cartDrawer').classList.remove('open');
+  $('#backdrop').classList.remove('show');
+  document.body.style.overflow='';
+}
+$('#modalClose').onclick=closeAll; $('#closeCart').onclick=closeAll; $('#backdrop').onclick=closeAll;
+$('#modalAdd').onclick=()=>{
+  if(!chosenSize){ const b=$('#modalAdd'); b.textContent='ESCOLHA UM TAMANHO'; setTimeout(()=>b.textContent='ADICIONAR AO CARRINHO',1200); return; }
+  cart.push({...activeProduct,size:chosenSize,cartId:crypto.randomUUID ? crypto.randomUUID() : Date.now()});
+  saveCart(); closeAll(); openCart();
+};
+function saveCart(){localStorage.setItem('lz-cart-v3',JSON.stringify(cart));renderCart();}
+function renderCart(){
+  $('#cartCount').textContent=cart.length;
+  $('#cartEmpty').style.display=cart.length?'none':'block';
+  $('#cartItems').innerHTML=cart.map(x=>`<div class="cart-item"><img src="${x.image}" alt=""><div><h4>${x.name}</h4><small>${x.size} / ${x.color}</small><p>${money(x.price)}</p></div><button data-remove="${x.cartId}">×</button></div>`).join('');
+  $('#cartTotal').textContent=money(cart.reduce((a,b)=>a+b.price,0));
+  $$('[data-remove]').forEach(b=>b.onclick=()=>{cart=cart.filter(x=>String(x.cartId)!==String(b.dataset.remove));saveCart();});
+}
+renderCart();
+function openCart(){renderCart();$('#cartDrawer').classList.add('open');$('#backdrop').classList.add('show');document.body.style.overflow='hidden';}
+$('#cartBtn').onclick=openCart;
+
+function searchProducts(q=''){
+ const list=cfg.products.filter(p=>(p.name+' '+p.color+' '+p.gender).toLowerCase().includes(q.toLowerCase()));
+ $('#searchResults').innerHTML=list.map(p=>`<div class="search-item" data-search-id="${p.id}"><img src="${p.image}" alt=""><h4>${p.name}</h4><span>${money(p.price)}</span></div>`).join('');
+ $$('[data-search-id]').forEach(x=>x.onclick=()=>{closeSearch();openProduct(x.dataset.searchId)});
+}
+function openSearch(){$('#searchOverlay').classList.add('open');searchProducts();setTimeout(()=>$('#searchInput').focus(),150)}
+function closeSearch(){$('#searchOverlay').classList.remove('open');$('#searchInput').value=''}
+$('#searchBtn').onclick=openSearch;$('#closeSearch').onclick=closeSearch;$('#searchInput').oninput=e=>searchProducts(e.target.value);
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeAll();closeSearch();}});

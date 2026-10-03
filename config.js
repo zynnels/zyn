@@ -1,12 +1,91 @@
-window.LZ_CONFIG = {
+window.LZ_STORE = {
+  brand: {
+    name: "LZ",
+    storeName: "LZ STORE",
+    year: "2026",
+    instagram: "#",
+    tiktok: "#"
+  },
   products: [
-    {id:'black-orbit',name:'Orbit Hoodie',category:'masculino',color:'Black',price:34.99,image:'/assets/products/hoodie-black.png',badge:'DROP 001',description:'Moletom oversized preto com construção limpa e arte gráfica exclusiva LZ.',sizes:['S','M','L','XL']},
-    {id:'grey-orbit',name:'Silver Orbit Hoodie',category:'masculino',color:'Heather Grey',price:34.99,image:'/assets/products/hoodie-grey.png',badge:'NEW',description:'Cinza mescla com visual premium e shape amplo para uso diário.',sizes:['S','M','L','XL']},
-    {id:'navy-alpine',name:'Alpine Hoodie',category:'masculino',color:'Deep Navy',price:34.99,image:'/assets/products/hoodie-navy.png',badge:'DROP 001',description:'Azul-marinho profundo, corte oversized e composição gráfica inspirada em altitude.',sizes:['S','M','L','XL']},
-    {id:'beige-bloom',name:'Bloom Hoodie',category:'masculino',color:'Sand',price:34.99,image:'/assets/products/hoodie-beige.png',badge:'NEW',description:'Tom areia neutro com arte botânica nas costas e acabamento minimalista.',sizes:['S','M','L','XL']},
-    {id:'pink-ribbon',name:'Ribbon Hoodie',category:'feminino',color:'Dusty Pink',price:29.99,image:'/assets/products/women-pink.png',badge:'FEMME',description:'Shape feminino relaxed em rosa suave, com composição de laço nas costas.',sizes:['XS','S','M','L']},
-    {id:'lilac-butterfly',name:'Butterfly Hoodie',category:'feminino',color:'Soft Lilac',price:29.99,image:'/assets/products/women-lilac.png',badge:'FEMME',description:'Lilás delicado com shape curto e amplo e arte de borboleta monocromática.',sizes:['XS','S','M','L']},
-    {id:'cream-angel',name:'Angel Hoodie',category:'feminino',color:'Ivory',price:29.99,image:'/assets/products/women-cream.png',badge:'FEMME',description:'Ivory clean com ilustração clássica reinterpretada para o universo LZ.',sizes:['XS','S','M','L']},
-    {id:'blue-wave',name:'Wave Hoodie',category:'feminino',color:'Baby Blue',price:29.99,image:'/assets/products/women-blue.png',badge:'FEMME',description:'Azul claro com shape feminino oversized e composição oceânica nas costas.',sizes:['XS','S','M','L']}
+    {
+      id: "noir-motion",
+      name: "Noir Motion Tee",
+      gender: "masculino",
+      price: 34.99,
+      color: "Preto",
+      image: "./assets/products/noir-motion.png",
+      description: "T-shirt oversized preta com arte tipográfica orbital nas costas e monograma LZ minimalista na frente.",
+      sizes: ["S","M","L","XL"]
+    },
+    {
+      id: "first-edit",
+      name: "First Edit Tee",
+      gender: "masculino",
+      price: 34.99,
+      color: "Branco",
+      image: "./assets/products/first-edit.png",
+      description: "T-shirt oversized branca com composição clássica, escultura e linguagem editorial.",
+      sizes: ["S","M","L","XL"]
+    },
+    {
+      id: "midnight-drive",
+      name: "Midnight Drive Tee",
+      gender: "masculino",
+      price: 34.99,
+      color: "Cinza washed",
+      image: "./assets/products/midnight-drive.png",
+      description: "T-shirt washed cinza com arte automotiva noturna e acabamento visual vintage.",
+      sizes: ["S","M","L","XL"]
+    },
+    {
+      id: "high-ground",
+      name: "High Ground Tee",
+      gender: "masculino",
+      price: 34.99,
+      color: "Creme",
+      image: "./assets/products/high-ground.png",
+      description: "T-shirt creme com montanha ilustrada e composição premium monocromática.",
+      sizes: ["S","M","L","XL"]
+    },
+    {
+      id: "soft-riot",
+      name: "Soft Riot Tee",
+      gender: "feminino",
+      price: 29.99,
+      color: "Rosa",
+      image: "./assets/products/soft-riot.png",
+      description: "Baby tee rosa com laço acetinado e composição delicada de alto contraste.",
+      sizes: ["XS","S","M","L"]
+    },
+    {
+      id: "after-hours",
+      name: "After Hours Tee",
+      gender: "feminino",
+      price: 29.99,
+      color: "Lilás",
+      image: "./assets/products/after-hours.png",
+      description: "Baby tee lilás com borboleta e linguagem editorial noturna.",
+      sizes: ["XS","S","M","L"]
+    },
+    {
+      id: "velvet-sky",
+      name: "Velvet Sky Tee",
+      gender: "feminino",
+      price: 29.99,
+      color: "Marfim",
+      image: "./assets/products/velvet-sky.png",
+      description: "Baby tee marfim com ilustração clássica e acabamento elegante.",
+      sizes: ["XS","S","M","L"]
+    },
+    {
+      id: "blue-hour",
+      name: "Blue Hour Tee",
+      gender: "feminino",
+      price: 29.99,
+      color: "Azul claro",
+      image: "./assets/products/blue-hour.png",
+      description: "Baby tee azul claro com arte de ondas e visual fresco para coleção feminina.",
+      sizes: ["XS","S","M","L"]
+    }
   ]
 };
