@@ -1,74 +1,147 @@
-LZ
-DROP 01 MANIFESTO FEMME
-⌕ CARRINHO 0
-AURA
-LZ / DROP 01 / 2026
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="description" content="LZ — streetwear premium. Wear your aura." />
+  <title>LZ — Wear Your Aura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="announcement" id="announcement"></div>
 
-DON'T FIT IN.
-STAND OUT.
-Streetwear criado para quem não entra na sala para combinar com ela.
+  <header class="nav">
+    <a href="#top" class="brand" aria-label="LZ início"><span>LZ</span></a>
+    <nav class="nav-links">
+      <a href="#catalogo">DROP 01</a>
+      <a href="#manifesto">MANIFESTO</a>
+      <a href="#femme">FEMME</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Pesquisar">⌕</button>
+      <button class="cart-btn" id="cartBtn">CARRINHO <span id="cartCount">0</span></button>
+    </div>
+  </header>
 
-COMPRAR O DROP CONHECER A LZ
-Noise With Purpose Hoodie
-01/08NOISE WITH PURPOSE
-SCROLL TO FEEL IT ↓
-WEAR YOUR AURA ✦ LESS TALK MORE AURA ✦ MADE FOR THE RESTLESS ✦ NOT MADE TO FIT IN ✦ WEAR YOUR AURA ✦ LESS TALK MORE AURA ✦ MADE FOR THE RESTLESS ✦ NOT MADE TO FIT IN ✦
-DROP 01
+  <main id="top">
+    <section class="hero">
+      <div class="hero-bg-word">AURA</div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">LZ / DROP 01 / 2026</p>
+        <h1>DON'T FIT IN.<br><em>STAND OUT.</em></h1>
+        <p class="hero-text">Streetwear criado para quem não entra na sala para combinar com ela.</p>
+        <div class="hero-cta">
+          <a href="#catalogo" class="btn btn-light">COMPRAR O DROP</a>
+          <a href="#manifesto" class="btn btn-ghost">CONHECER A LZ</a>
+        </div>
+      </div>
+      <div class="hero-card reveal delay-1">
+        <img src="assets/products/hoodie-black.png" alt="Noise With Purpose Hoodie" />
+        <div class="hero-card-meta"><span>01/08</span><span>NOISE WITH PURPOSE</span></div>
+      </div>
+      <div class="scroll-note">SCROLL TO FEEL IT ↓</div>
+    </section>
 
-O uniforme de quem
-não passa despercebido.
-TODOS CORE FEMME
-MANIFESTO / 001
+    <section class="marquee" aria-label="LZ slogans">
+      <div class="marquee-track">
+        <span>WEAR YOUR AURA ✦ LESS TALK MORE AURA ✦ MADE FOR THE RESTLESS ✦ NOT MADE TO FIT IN ✦ </span>
+        <span>WEAR YOUR AURA ✦ LESS TALK MORE AURA ✦ MADE FOR THE RESTLESS ✦ NOT MADE TO FIT IN ✦ </span>
+      </div>
+    </section>
 
-ROUPA NÃO MUDA QUEM VOCÊ É.
-MAS MUDA COMO O MUNDO TE VÊ CHEGANDO.
-Não criamos básicos para desaparecer. A LZ nasce para transformar presença em linguagem: peso, corte, tipografia e atitude — sem pedir licença.
+    <section class="catalog section" id="catalogo">
+      <div class="section-head">
+        <div><p class="eyebrow dark">DROP 01</p><h2>O uniforme de quem<br><em>não passa despercebido.</em></h2></div>
+        <div class="filters" role="group" aria-label="Filtros do catálogo">
+          <button class="filter active" data-filter="todos">TODOS</button>
+          <button class="filter" data-filter="masculino">CORE</button>
+          <button class="filter" data-filter="feminino">FEMME</button>
+        </div>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
 
-LZ FEMME
+    <section class="statement" id="manifesto">
+      <div class="statement-inner reveal">
+        <p class="eyebrow">MANIFESTO / 001</p>
+        <h2>ROUPA NÃO MUDA QUEM VOCÊ É.<br><em>MAS MUDA COMO O MUNDO TE VÊ CHEGANDO.</em></h2>
+        <p>Não criamos básicos para desaparecer. A LZ nasce para transformar presença em linguagem: peso, corte, tipografia e atitude — sem pedir licença.</p>
+      </div>
+    </section>
 
-Soft doesn't
-mean small.
-Uma cápsula feminina que mistura suavidade, presença e frases que não precisam de legenda.
+    <section class="femme section" id="femme">
+      <div class="femme-left reveal">
+        <p class="eyebrow dark">LZ FEMME</p>
+        <h2>Soft doesn't<br>mean <em>small.</em></h2>
+        <p>Uma cápsula feminina que mistura suavidade, presença e frases que não precisam de legenda.</p>
+        <button class="btn btn-dark" data-scroll-filter="feminino">VER COLEÇÃO FEMME</button>
+      </div>
+      <div class="femme-collage reveal delay-1">
+        <img class="femme-main" src="assets/products/women-pink.png" alt="Soft Power Hoodie" />
+        <div class="femme-mini"><img src="assets/products/women-blue.png" alt="Power In Bloom Hoodie" /></div>
+        <div class="stamp">LZ<br>FEMME<br>26</div>
+      </div>
+    </section>
 
-VER COLEÇÃO FEMME
-Soft Power Hoodie
-Power In Bloom Hoodie
-LZ
-FEMME
-26
-01
-OVERSIZED BY DESIGN
-Caimento pensado para ter presença sem esforço.
+    <section class="features">
+      <div><span>01</span><h3>OVERSIZED BY DESIGN</h3><p>Caimento pensado para ter presença sem esforço.</p></div>
+      <div><span>02</span><h3>SMALL FRONT. BIG BACK.</h3><p>Minimalista na chegada. Memorável na saída.</p></div>
+      <div><span>03</span><h3>LIMITED DROPS</h3><p>Menos quantidade. Mais identidade.</p></div>
+    </section>
 
-02
-SMALL FRONT. BIG BACK.
-Minimalista na chegada. Memorável na saída.
+    <section class="newsletter">
+      <p class="eyebrow">INNER CIRCLE</p>
+      <h2>Entre antes que<br><em>todo mundo entre.</em></h2>
+      <form id="newsletterForm"><input type="email" placeholder="seu@email.com" required><button type="submit">ENTRAR →</button></form>
+      <p class="newsletter-note" id="newsletterNote">Acesso antecipado a drops, reposições e peças limitadas.</p>
+    </section>
+  </main>
 
-03
-LIMITED DROPS
-Menos quantidade. Mais identidade.
+  <footer>
+    <div class="footer-brand">LZ</div>
+    <div class="footer-cols">
+      <div><b>SHOP</b><a href="#catalogo">Drop 01</a><a href="#femme">Femme</a></div>
+      <div><b>INFO</b><a href="#manifesto">Manifesto</a><a href="#">Envios & trocas</a></div>
+      <div><b>SOCIAL</b><a id="igLink" target="_blank">Instagram</a><a id="ttLink" target="_blank">TikTok</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 LZ STUDIO</span><span id="footerTagline"></span><span>PORTUGAL / WORLDWIDE</span></div>
+  </footer>
 
-INNER CIRCLE
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-head"><h3>SEU CARRINHO</h3><button id="closeCart">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty">Seu carrinho ainda tá sem aura 😭</div>
+    <div class="drawer-footer"><div class="total"><span>TOTAL</span><strong id="cartTotal">€0,00</strong></div><button class="checkout">FINALIZAR COMPRA</button><small>Checkout demonstrativo — conecte Stripe/Shopify depois.</small></div>
+  </aside>
+  <div class="backdrop" id="backdrop"></div>
 
-Entre antes que
-todo mundo entre.
-seu@email.com
-ENTRAR →
-Acesso antecipado a drops, reposições e peças limitadas.
+  <div class="product-modal" id="productModal" aria-hidden="true">
+    <button class="modal-close" id="modalClose">×</button>
+    <div class="modal-image"><img id="modalImage" alt="Produto LZ"></div>
+    <div class="modal-info">
+      <p class="eyebrow dark" id="modalBadge"></p>
+      <h2 id="modalName"></h2>
+      <p class="modal-color" id="modalColor"></p>
+      <p class="modal-price" id="modalPrice"></p>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="size-title"><span>TAMANHO</span><small>GUIA DE TAMANHOS</small></div>
+      <div class="size-grid" id="sizeGrid"></div>
+      <button class="add-cart" id="modalAdd">ADICIONAR AO CARRINHO</button>
+    </div>
+  </div>
 
-LZ
-SHOPDrop 01Femme
-INFOManifestoEnvios & trocas
-SOCIALInstagramTikTok
-© 2026 LZ STUDIOPORTUGAL / WORLDWIDE
-SEU CARRINHO
-×
-Seu carrinho ainda tá sem aura 😭
-TOTAL€0,00
-FINALIZAR COMPRACheckout demonstrativo — conecte Stripe/Shopify depois.
-×
-Produto LZ
-TAMANHOGUIA DE TAMANHOS
-ADICIONAR AO CARRINHO
-× 
-PROCURE SUA PEÇA...
+  <div class="search-overlay" id="searchOverlay">
+    <button id="closeSearch">×</button>
+    <input id="searchInput" type="search" placeholder="PROCURE SUA PEÇA..." autocomplete="off">
+    <div id="searchResults" class="search-results"></div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
