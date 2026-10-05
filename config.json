@@ -3,7 +3,7 @@
     "name": "LZ",
     "storeName": "LZ STORE",
     "year": "2026",
-    "instagram": "#",
+    "instagram": "lzstore.pt",
     "tiktok": "#",
     "announcement": "DROP 01 DISPONÍVEL AGORA",
     "heroKicker": "LZ STORE / DROP 01",
@@ -303,6 +303,12 @@
   "settings": {
     "showAnnouncement": true,
     "showCursorGlow": true,
-    "catalogTitle": "SHOP THE DROP"
+    "catalogTitle": "SHOP THE DROP",
+    "checkout": {
+      "whatsappNumber": "351928034683",
+      "instagram": "lzstore.pt",
+      "buttonLabel": "FINALIZAR PELO WHATSAPP",
+      "manualNotice": "Pagamento, envio e confirmação de estoque são combinados diretamente com a LZ."
+    }
   }
 }

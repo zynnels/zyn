@@ -20,3 +20,11 @@ Quando você clicar em SALVAR E PUBLICAR:
 3. o site redeploya automaticamente.
 
 O painel também permite upload de imagens direto para `assets/products/`.
+
+
+## Checkout manual via WhatsApp
+- WhatsApp configurado: +351 928 034 683
+- Instagram configurado: @lzstore.pt
+- O cliente revisa o carrinho, informa nome/cidade/Instagram opcional e o site abre o WhatsApp com o pedido formatado.
+- O pagamento, estoque, endereço e envio continuam sendo confirmados manualmente.
+- O número e o Instagram podem ser alterados em `/admin` > Site e publicados pelo botão do GitHub.

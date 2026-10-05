@@ -18,6 +18,12 @@ function applyBrand(){
  $('#announcement').textContent=b.announcement||'';
  $('#announcement').classList.toggle('show',!!(s.showAnnouncement&&b.announcement));
  $('#cursorGlow').style.display=s.showCursorGlow===false?'none':'block';
+ const co=s.checkout||{};
+ if($('#whatsappCheckoutBtn')) $('#whatsappCheckoutBtn').textContent=co.buttonLabel||'FINALIZAR PELO WHATSAPP';
+ if($('#checkoutNotice')) $('#checkoutNotice').textContent=co.manualNotice||'Pagamento e entrega são combinados diretamente com a LZ.';
+ const ig=co.instagram||b.instagram||'lzstore.pt';
+ if($('#instagramCheckout')){$('#instagramCheckout').href=`https://www.instagram.com/${ig.replace('@','')}/`;$('#instagramCheckout').textContent=`Prefere Instagram? Falar com @${ig.replace('@','')} ↗`;}
+ if($('#footerInstagram')) $('#footerInstagram').href=`https://www.instagram.com/${ig.replace('@','')}/`;
 }
 function renderHero(){
  const f=products.filter(p=>p.featured).slice(0,3), use=f.length>=3?f:products.slice(0,3);
@@ -35,7 +41,8 @@ function wire(){
  $$('[data-filter-jump]').forEach(b=>b.onclick=()=>{$('#catalogo').scrollIntoView({behavior:'smooth'});setTimeout(()=>document.querySelector(`.filter[data-filter="${b.dataset.filterJump}"]`).click(),350)});
  $('#cartBtn').onclick=openCart;$('#closeCart').onclick=closeAll;$('#backdrop').onclick=closeAll;$('#modalClose').onclick=closeAll;
  $('#searchBtn').onclick=openSearch;$('#closeSearch').onclick=closeSearch;$('#searchInput').oninput=e=>searchProducts(e.target.value);$('#modalAdd').onclick=addToCart;
- window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeAll();closeSearch()}});
+ $('#checkoutBtn').onclick=openCheckout;$('#checkoutClose').onclick=closeCheckout;$('#checkoutForm').onsubmit=finalizeWhatsApp;
+ window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeAll();closeSearch();closeCheckout()}});
  const g=$('#cursorGlow');window.addEventListener('pointermove',e=>{g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
 }
 function openProduct(id){
@@ -47,9 +54,56 @@ function openProduct(id){
 }
 function addToCart(){if(!chosenSize){const b=$('#modalAdd');b.textContent='ESCOLHA UM TAMANHO';setTimeout(()=>b.textContent='ADICIONAR AO CARRINHO',1000);return}cart.push({...activeProduct,size:chosenSize,cartId:crypto.randomUUID?crypto.randomUUID():Date.now()});saveCart();closeAll();openCart()}
 function saveCart(){localStorage.setItem('lz-cart-v6',JSON.stringify(cart));renderCart()}
-function renderCart(){$('#cartCount').textContent=cart.length;$('#cartEmpty').style.display=cart.length?'none':'block';$('#cartItems').innerHTML=cart.map(x=>`<div class="cart-item"><img src="${x.image}"><div><h4>${x.name}</h4><small>${x.size} / ${x.color}</small><p>${money(x.price)}</p></div><button data-remove="${x.cartId}">×</button></div>`).join('');$('#cartTotal').textContent=money(cart.reduce((a,b)=>a+b.price,0));$$('[data-remove]').forEach(b=>b.onclick=()=>{cart=cart.filter(x=>String(x.cartId)!==String(b.dataset.remove));saveCart()})}
+function renderCart(){$('#cartCount').textContent=cart.length;$('#cartEmpty').style.display=cart.length?'none':'block';$('#cartItems').innerHTML=cart.map(x=>`<div class="cart-item"><img src="${x.image}"><div><h4>${x.name}</h4><small>${x.size} / ${x.color}</small><p>${money(x.price)}</p></div><button data-remove="${x.cartId}">×</button></div>`).join('');$('#cartTotal').textContent=money(cart.reduce((a,b)=>a+b.price,0));$('#checkoutBtn').disabled=!cart.length;$$('[data-remove]').forEach(b=>b.onclick=()=>{cart=cart.filter(x=>String(x.cartId)!==String(b.dataset.remove));saveCart()})}
 function openCart(){renderCart();$('#cartDrawer').classList.add('open');$('#backdrop').classList.add('show');document.body.style.overflow='hidden'}
 function closeAll(){$('#productModal').classList.remove('open');$('#cartDrawer').classList.remove('open');$('#backdrop').classList.remove('show');document.body.style.overflow=''}
+
+function groupedCart(){
+ const map=new Map();
+ cart.forEach(item=>{
+  const key=`${item.id}|${item.size}|${item.color}`;
+  if(!map.has(key)) map.set(key,{...item,qty:0});
+  map.get(key).qty++;
+ });
+ return [...map.values()];
+}
+function renderCheckout(){
+ const items=groupedCart();
+ $('#checkoutItems').innerHTML=items.map(x=>`<div class="checkout-line"><img src="${x.image}" alt=""><div><h4>${x.qty}× ${x.name}</h4><p>Tamanho ${x.size} · ${x.color}</p></div><strong>${money(x.price*x.qty)}</strong></div>`).join('');
+ $('#checkoutTotal').textContent=money(cart.reduce((a,b)=>a+b.price,0));
+}
+function openCheckout(){
+ if(!cart.length)return;
+ closeAll();renderCheckout();
+ $('#checkoutModal').classList.add('open');$('#checkoutModal').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+ setTimeout(()=>$('#customerName').focus(),120);
+}
+function closeCheckout(){
+ if(!$('#checkoutModal'))return;
+ $('#checkoutModal').classList.remove('open');$('#checkoutModal').setAttribute('aria-hidden','true');
+ if(!$('#productModal').classList.contains('open')&&!$('#cartDrawer').classList.contains('open')&&!$('#searchOverlay').classList.contains('open'))document.body.style.overflow='';
+}
+function cleanHandle(v=''){return String(v).trim().replace(/^@/,'')}
+function makeOrderId(){const d=new Date(),pad=n=>String(n).padStart(2,'0');return `LZ-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}-${String(Date.now()).slice(-5)}`}
+function finalizeWhatsApp(e){
+ e.preventDefault();if(!cart.length)return;
+ const checkout=cfg.settings?.checkout||{};
+ const number=String(checkout.whatsappNumber||'351928034683').replace(/\D/g,'');
+ const name=$('#customerName').value.trim(),city=$('#customerCity').value.trim(),ig=cleanHandle($('#customerInstagram').value),notes=$('#customerNotes').value.trim();
+ if(!name||!city)return;
+ const id=makeOrderId(), items=groupedCart(), total=cart.reduce((a,b)=>a+b.price,0);
+ let msg=`🖤 *LZ STORE — NOVO PEDIDO*\n*Pedido:* ${id}\n\n`;
+ msg+=`*Cliente:* ${name}\n*Cidade:* ${city}\n`;
+ if(ig)msg+=`*Instagram:* @${ig}\n`;
+ msg+='\n*ITENS*\n';
+ items.forEach((x,i)=>{msg+=`${i+1}. *${x.qty}x ${x.name}*\nTamanho: ${x.size}\nCor: ${x.color}\nSubtotal: ${money(x.price*x.qty)}\n\n`});
+ msg+=`*TOTAL: ${money(total)}*\n`;
+ if(notes)msg+=`\n*Observações:* ${notes}\n`;
+ msg+='\nQuero finalizar esse pedido. Podem confirmar estoque, pagamento e envio?';
+ const url=`https://wa.me/${number}?text=${encodeURIComponent(msg)}`;
+ window.open(url,'_blank','noopener,noreferrer');
+}
+
 function openSearch(){$('#searchOverlay').classList.add('open');searchProducts('');setTimeout(()=>$('#searchInput').focus(),100)}
 function closeSearch(){$('#searchOverlay').classList.remove('open');$('#searchInput').value=''}
 function searchProducts(q=''){const list=products.filter(p=>`${p.name} ${p.type} ${p.gender} ${p.color}`.toLowerCase().includes(q.toLowerCase()));$('#searchResults').innerHTML=list.map(p=>`<div class="search-item" data-search-id="${p.id}"><img src="${p.image}"><h4>${p.name}</h4><span>${money(p.price)}</span></div>`).join('');$$('[data-search-id]').forEach(e=>e.onclick=()=>{closeSearch();openProduct(e.dataset.searchId)})}

@@ -128,6 +128,7 @@
       <a href="#catalogo">Catálogo</a>
       <a href="#highlights">Destaques</a>
       <a href="#top">Topo</a>
+      <a id="footerInstagram" href="https://www.instagram.com/lzstore.pt/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </footer>
 
@@ -142,7 +143,7 @@
     <p id="cartEmpty" class="empty">Seu carrinho está vazio.</p>
     <div class="drawer-foot">
       <div><span>Total</span><strong id="cartTotal">€0,00</strong></div>
-      <button class="primary-btn full">FINALIZAR COMPRA</button>
+      <button class="primary-btn full" id="checkoutBtn">FINALIZAR COMPRA</button>
     </div>
   </aside>
 
@@ -157,6 +158,33 @@
       <p class="label">TAMANHO</p>
       <div class="size-grid" id="sizeGrid"></div>
       <button class="primary-btn full" id="modalAdd">ADICIONAR AO CARRINHO</button>
+    </div>
+  </div>
+
+
+  <div class="checkout-modal" id="checkoutModal" aria-hidden="true">
+    <div class="checkout-shell">
+      <button class="checkout-close" id="checkoutClose" aria-label="Fechar">×</button>
+      <div class="checkout-intro">
+        <p class="eyebrow">LZ STORE / CHECKOUT MANUAL</p>
+        <h3>SEU PEDIDO.</h3>
+        <p>Revise os itens e preencha seus dados. No final, o site abre o WhatsApp da LZ com o pedido pronto para enviar.</p>
+      </div>
+      <div class="checkout-grid">
+        <div class="checkout-summary">
+          <div id="checkoutItems"></div>
+          <div class="checkout-total"><span>Total</span><strong id="checkoutTotal">€0,00</strong></div>
+        </div>
+        <form class="checkout-form" id="checkoutForm">
+          <label>Seu nome<input id="customerName" autocomplete="name" required placeholder="Ex.: João Silva"></label>
+          <label>Cidade<input id="customerCity" autocomplete="address-level2" required placeholder="Ex.: Lisboa"></label>
+          <label>Instagram <span>(opcional)</span><input id="customerInstagram" placeholder="@seuinstagram"></label>
+          <label>Observações <span>(opcional)</span><textarea id="customerNotes" rows="4" placeholder="Entrega, dúvida de tamanho, etc."></textarea></label>
+          <p class="checkout-notice" id="checkoutNotice"></p>
+          <button class="primary-btn full checkout-whatsapp" type="submit" id="whatsappCheckoutBtn">FINALIZAR PELO WHATSAPP</button>
+          <a class="instagram-checkout" id="instagramCheckout" href="https://www.instagram.com/lzstore.pt/" target="_blank" rel="noopener">Prefere Instagram? Falar com @lzstore.pt ↗</a>
+        </form>
+      </div>
     </div>
   </div>
 
